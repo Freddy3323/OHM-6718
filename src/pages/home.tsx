@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
+import Footer from "@/components/Footer";
 import {
   CheckCircle2,
   Video,
@@ -9,7 +10,6 @@ import {
   FileCheck,
   Shield,
   Clock,
-  Phone,
   Calendar,
   MessageSquare,
   Award,
@@ -25,11 +25,11 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <img
               src="/logo.png"
-              alt="OpenHomeMate"
+              alt="OpenHouseMate.com"
               className="h-10 w-auto"
             />
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-foreground">OpenHomeMate</span>
+              <span className="font-bold text-xl text-foreground">OpenHouseMate.com</span>
               <span className="text-xs text-muted-foreground">Building Inspection Specialists</span>
             </div>
           </div>
@@ -79,9 +79,14 @@ export default function Home() {
                     Book Now
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Contact Us
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+                  onClick={() => window.location.href = 'sms:0468046283'}
+                >
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  Chat with AI Assistant
                 </Button>
               </div>
               <div className="flex items-center gap-8 pt-4">
@@ -394,6 +399,61 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <Badge variant="outline" className="mb-4">
+              Professional Excellence
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Trusted by Thousands of Australians
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-2xl text-foreground mb-2">Licensed & Insured</h3>
+                <p className="text-sm text-muted-foreground">Full professional indemnity coverage</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
+                  <Award className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-2xl text-foreground mb-2">30+ Years</h3>
+                <p className="text-sm text-muted-foreground">Of professional experience</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle2 className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-2xl text-foreground mb-2">10,000+</h3>
+                <p className="text-sm text-muted-foreground">Inspections completed</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-2">
+              <CardContent className="p-6">
+                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-2xl text-foreground mb-2">99.8%</h3>
+                <p className="text-sm text-muted-foreground">Accuracy rate</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-8">
@@ -433,50 +493,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t bg-muted/30 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <img src="/logo.png" alt="OpenHomeMate" className="h-8 w-auto" />
-                <span className="font-bold text-lg">OpenHomeMate</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Professional building inspections powered by AI technology and decades of expertise.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#services" className="hover:text-foreground">Virtual Inspections</a></li>
-                <li><a href="#services" className="hover:text-foreground">AI Defect Detection</a></li>
-                <li><a href="#services" className="hover:text-foreground">Instant Reports</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/dashboard" className="hover:text-foreground">Dashboard</Link></li>
-                <li><Link href="/booking" className="hover:text-foreground">Book Inspection</Link></li>
-                <li><a href="#" className="hover:text-foreground">About Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>info@openhomemate.com.au</li>
-                <li>Australia</li>
-                <li>
-                  <Link href="/terms" className="hover:text-foreground">Terms</Link> | <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} OpenHomeMate. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

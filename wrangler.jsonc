@@ -15,10 +15,19 @@
   },
   "vars": {
     "VITE_BETTER_AUTH_URL": "http://localhost:5173",
+    "VITE_ZOOM_SDK_KEY": "",
     "BETTER_AUTH_SECRET": "",
     "RUNABLE_SECRET": "",
     "AUTUMN_SECRET_KEY": "",
     "RUNABLE_GATEWAY_URL": "http://localhost:8080/gateway/v1",
+    "ADMIN_EMAIL": "",
+    "ZOOM_SDK_KEY": "",
+    "ZOOM_SDK_SECRET": "",
+    "ZOOM_ACCOUNT_ID": "",
+    "TWILIO_ACCOUNT_SID": "",
+    "TWILIO_AUTH_TOKEN": "",
+    "TWILIO_PHONE_NUMBER": "+61468046283",
+    "MESSAGEMIND_API_KEY": "",
   },
   "d1_databases": [
     {

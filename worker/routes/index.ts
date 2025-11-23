@@ -6,6 +6,8 @@ import { authRoutes } from "./auth-routes";
 import { bookingRoutes } from "./booking-routes";
 import { inspectionRoutes } from "./inspection-routes";
 import { defectRoutes } from "./defect-routes";
+import { smsRoutes } from "./sms-routes";
+import { zoomRoutes } from "./zoom-routes";
 
 export const apiRoutes = new Hono<HonoContext>()
 .route("/admin", adminRoutes)
@@ -14,3 +16,5 @@ export const apiRoutes = new Hono<HonoContext>()
 .route("/bookings", bookingRoutes)
 .route("/inspections", inspectionRoutes)
 .route("/defects", defectRoutes)
+.route("/sms", smsRoutes)
+.route("/zoom", zoomRoutes)

@@ -56,6 +56,57 @@ export const bookingRoutes = new Hono<HonoContext>()
         updatedAt: new Date(),
       });
 
+      c.executionCtx.waitUntil(
+        (async () => {
+          try {
+            const env = c.env;
+            if (
+              env.ZOOM_SDK_KEY &&
+              env.ZOOM_SDK_SECRET &&
+              env.ZOOM_ACCOUNT_ID
+            ) {
+              const zoomResponse = await fetch(
+                `${c.req.url.split("/api")[0]}/api/zoom/create-meeting`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    bookingId,
+                    topic: `Building Inspection - ${body.propertyAddress}`,
+                    startTime: scheduledDate.toISOString(),
+                  }),
+                }
+              );
+
+              if (!zoomResponse.ok) {
+                console.error("Failed to create Zoom meeting");
+              }
+            }
+
+            if (
+              env.TWILIO_ACCOUNT_SID &&
+              env.TWILIO_AUTH_TOKEN &&
+              env.TWILIO_PHONE_NUMBER
+            ) {
+              const smsResponse = await fetch(
+                `${c.req.url.split("/api")[0]}/api/sms/booking-confirmation`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ bookingId }),
+                }
+              );
+
+              if (!smsResponse.ok) {
+                console.error("Failed to send booking confirmation SMS");
+              }
+            }
+          } catch (error) {
+            console.error("Error in post-booking tasks:", error);
+          }
+        })()
+      );
+
       return c.json({
         success: true,
         booking: { id: bookingId },

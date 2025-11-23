@@ -4,6 +4,7 @@ import { AutumnProvider } from "autumn-js/react";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app.tsx";
+import { MessageMindWidget } from "@/components/chat/messagemind-widget";
 import "./styles/global.css";
 
 const queryClient = new QueryClient();
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <AutumnProvider betterAuthUrl={import.meta.env.VITE_BETTER_AUTH_URL}>
         <QueryClientProvider client={queryClient}>
           <App />
+          <MessageMindWidget />
         </QueryClientProvider>
       </AutumnProvider>
     </ThemeProvider>

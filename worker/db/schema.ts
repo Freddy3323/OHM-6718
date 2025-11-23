@@ -18,6 +18,8 @@ export const bookings = sqliteTable("bookings", {
   inspectorId: text("inspector_id").references(() => users.id),
   zoomMeetingId: text("zoom_meeting_id"),
   zoomJoinUrl: text("zoom_join_url"),
+  zoomPassword: text("zoom_password"),
+  smsNotificationsSent: integer("sms_notifications_sent", { mode: "boolean" }).default(false),
   createdAt: integer("created_at", { mode: "timestamp" }).defaultNow().notNull(),
   updatedAt: integer("updated_at", { mode: "timestamp" }).defaultNow().$onUpdate(() => new Date()).notNull(),
 });

@@ -1,0 +1,148 @@
+# User Request
+   IMPLEMENT ZOOM AND MESSAGEMIND.AI INTEGRATIONS:
+
+## ZOOM INTEGRATION:
+
+1. **Install Zoom Web SDK:**
+- Add @zoom/meetingsdk package to project
+- Configure Zoom SDK with proper credentials structure
+
+2. **Backend Zoom API Integration:**
+- Create API endpoint: POST /api/zoom/create-meeting
+  - Generates Zoom meeting for scheduled inspections
+  - Returns meeting ID, join URL, password
+  - Store meeting details in booking record
+- Create API endpoint: GET /api/zoom/meeting/:id
+  - Retrieves meeting details
+  - Validates user access
+- Add environment variables for Zoom:
+  - ZOOM_SDK_KEY
+  - ZOOM_SDK_SECRET
+  - ZOOM_ACCOUNT_ID
+
+3. **Frontend Zoom Integration:**
+- Implement Zoom SDK in inspection page (/inspection/:id)
+- Replace placeholder with actual Zoom video component
+- Initialize Zoom meeting when inspection starts
+- Support for:
+  - Video on/off toggle
+  - Microphone mute/unmute
+  - Screen sharing (inspector only)
+  - Meeting recording (save to reports)
+- Handle permissions for camera and microphone
+- Show proper error messages if permissions denied
+
+4. **Booking Flow Zoom Integration:**
+- When booking is confirmed, automatically create Zoom meeting
+- Store Zoom join URL in booking.zoomJoinUrl field
+- Display join link in dashboard for confirmed bookings
+- Send Zoom link via email in booking confirmation
+
+## MESSAGEMIND.AI INTEGRATION:
+
+1. **Add MessageMind Chat Widget:**
+- Integrate MessageMind.AI chat widget across all pages
+- Widget should be a floating button (bottom-right corner)
+- Connects to phone number: 0468 046 283
+- Widget config:
+  - Primary color: Blue (#2563eb) to match brand
+  - Position: Bottom right, 20px margin
+  - Icon: Chat bubble or MessageMind logo
+  - Opens chat interface on click
+
+2. **MessageMind Integration Points:**
+- Homepage hero: "CHAT WITH AI ASSISTANT" button opens MessageMind
+- Contact page: Embedded MessageMind chat interface
+- All "Contact Us" buttons: Open MessageMind chat
+- Pre-booking inquiries: MessageMind can answer questions
+
+3. **Implementation Options:**
+- Option A: If MessageMind provides embed code/widget script:
+  - Add script tag to index.html or main layout
+  - Initialize with phone number/API key
+- Option B: If MessageMind is phone-based only:
+  - Create chat UI that initiates call/SMS to 0468 046 283
+  - Add WhatsApp/SMS quick links
+- Option C: If MessageMind has API:
+  - Build custom chat interface
+  - Connect to MessageMind API
+  - Real-time messaging
+
+4. **MessageMind Button Styling:**
+- Floating action button (FAB) style
+- Animated pulse effect to draw attention
+- Badge notification if AI has suggestions
+- Accessible via keyboard (tab + enter)
+
+## TWILIO SMS INTEGRATION:
+
+1. **Install Twilio SDK:**
+- Add twilio package to project
+- Configure with account credentials
+
+2. **Backend Twilio Integration:**
+- Create API endpoint: POST /api/sms/send
+- Environment variables:
+  - TWILIO_ACCOUNT_SID
+  - TWILIO_AUTH_TOKEN
+  - TWILIO_PHONE_NUMBER (0468 046 283)
+
+3. **SMS Notification Triggers:**
+- Booking created: Send confirmation SMS with details
+- Booking confirmed: Send SMS with Zoom link
+- 24 hours before inspection: Send reminder SMS
+- Inspection completed: Send SMS with report link
+
+4. **SMS Templates:**
+- Booking confirmation: "Thanks for booking with OpenHouseMate! Your inspection is scheduled for [DATE] at [TIME]. Property: [ADDRESS]. We'll send your Zoom link 24 hours before."
+- Zoom link: "Your OpenHouseMate inspection is tomorrow! Join via Zoom: [LINK]. Meeting ID: [ID]. Need help? Chat with AI: openhousemate.com"
+- Reminder: "Reminder: Your building inspection starts in 1 hour. Join Zoom: [LINK]"
+- Report ready: "Your inspection report is ready! Download: [LINK]"
+
+## TECHNICAL REQUIREMENTS:
+
+1. **Environment Variables to Add:**
+```
+ZOOM_SDK_KEY=your_zoom_sdk_key
+ZOOM_SDK_SECRET=your_zoom_sdk_secret
+ZOOM_ACCOUNT_ID=your_zoom_account_id
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_token
+TWILIO_PHONE_NUMBER=+61468046283
+MESSAGEMIND_API_KEY=your_messagemind_key (if applicable)
+```
+
+2. **Package Dependencies:**
+- @zoom/meetingsdk
+- twilio
+- Any MessageMind SDK if available
+
+3. **Database Updates:**
+- Ensure bookings table has zoomJoinUrl, zoomMeetingId, zoomPassword fields
+- Add smsNotificationsSent boolean field to track sent messages
+
+4. **Error Handling:**
+- Graceful fallbacks if Zoom fails to initialize
+- Show manual Zoom link if SDK doesn't load
+- SMS delivery failure logging
+- MessageMind widget offline fallback (show phone number)
+
+5. **Security:**
+- Validate Zoom meeting access (only participants can join)
+- Rate limit SMS sending
+- Sanitize phone numbers
+- Secure API endpoints with authentication
+
+IMPORTANT: 
+- Create placeholder environment variables with comments explaining where to get credentials
+- Add comprehensive error messages for missing credentials
+- Build the integrations to be testable even without production credentials
+- Add admin panel section to configure integration settings
+
+   
+
+   ## Assets (inside workspace, to be included in the website)
+   - /home/user/websites/openhomemate/public/logo.png
+- /home/user/websites/openhomemate/public/hero-inspector.png
+- /home/user/websites/openhomemate/public/virtual-inspection.png
+- /home/user/websites/openhomemate/public/defect-detection.png

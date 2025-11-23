@@ -1,18 +1,22 @@
 {
   "site": {
-    "name": "OpenHomeMate",
+    "name": "OpenHouseMate.com",
     "tagline": "AI-Powered Building Inspection Excellence",
     "description": "Professional Australian building inspections with AI-powered defect detection. Over 30 years of expertise delivering comprehensive reports through live virtual inspections.",
     "ogImage": "/hero-inspector.png",
     "twitterHandle": "",
     "contact": {
-      "email": "info@openhomemate.com.au",
-      "company": "OpenHomeMate",
-      "address": "Australia"
+      "email": "info@openhousemate.com",
+      "phone": "0468 046 283",
+      "company": "OpenHouseMate.com",
+      "address": "Sydney, Australia",
+      "abn": "To be provided"
     },
     "legal": {
       "privacyPolicy": "/privacy",
-      "termsOfService": "/terms"
+      "termsOfService": "/terms",
+      "contactPage": "/contact",
+      "dataHandling": "/data-handling"
     }
   },
   "theme": {

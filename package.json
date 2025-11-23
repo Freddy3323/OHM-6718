@@ -39,6 +39,7 @@
     "@runablehq/vite-editor-plugin": "^0.0.34",
     "@tailwindcss/vite": "^4.1.14",
     "@tanstack/react-query": "^5.90.2",
+    "@zoom/meetingsdk": "^4.1.0",
     "ai": "^5.0.70",
     "atmn": "^0.0.27",
     "autumn-js": "^0.1.40",
@@ -56,6 +57,7 @@
     "react-hook-form": "^7.65.0",
     "react-router-dom": "^7.9.4",
     "tailwind-merge": "^3.3.1",
+    "twilio": "^5.10.6",
     "wouter": "^3.7.1",
     "zod": "^4.1.12"
   },

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,7 @@ import { Link, useParams } from "wouter";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api-client";
 import { authClient } from "@/lib/auth";
+import { ZoomMeeting } from "@/components/zoom/zoom-meeting";
 import {
   Video,
   Mic,
@@ -33,6 +34,11 @@ export default function InspectionPage() {
   const [videoEnabled, setVideoEnabled] = useState(true);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [aiDetectionEnabled, setAiDetectionEnabled] = useState(true);
+  const [zoomSignature, setZoomSignature] = useState<string | null>(null);
+  const [meetingInfo, setMeetingInfo] = useState<{
+    meetingId: string;
+    password?: string;
+  } | null>(null);
   
   const [defectForm, setDefectForm] = useState<{
     defectTypeId?: string;
@@ -73,6 +79,44 @@ export default function InspectionPage() {
     },
     enabled: !!id,
   });
+
+  useEffect(() => {
+    const fetchZoomInfo = async () => {
+      if (inspection?.inspection?.bookingId) {
+        try {
+          const response = await apiClient.zoom.meeting[":id"].$get({
+            param: { id: inspection.inspection.bookingId },
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            setMeetingInfo({
+              meetingId: data.meetingId,
+              password: data.password,
+            });
+
+            const sigResponse = await apiClient.zoom["sdk-signature"].$post({
+              json: {
+                meetingNumber: data.meetingId,
+                role: session?.user?.role === "admin" ? 1 : 0,
+              },
+            });
+
+            if (sigResponse.ok) {
+              const sigData = await sigResponse.json();
+              setZoomSignature(sigData.signature || null);
+            }
+          }
+        } catch (error) {
+          console.error("Failed to fetch Zoom info:", error);
+        }
+      }
+    };
+
+    if (isInspecting && inspection?.inspection) {
+      fetchZoomInfo();
+    }
+  }, [isInspecting, inspection, session]);
 
   const { data: defectTypes } = useQuery({
     queryKey: ["defect-types"],
@@ -265,8 +309,8 @@ export default function InspectionPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center relative overflow-hidden">
-                    {!isInspecting ? (
+                  {!isInspecting ? (
+                    <div className="aspect-video bg-muted rounded-lg flex items-center justify-center relative overflow-hidden">
                       <div className="text-center space-y-4">
                         <Video className="h-16 w-16 text-muted-foreground mx-auto" />
                         <div>
@@ -287,32 +331,46 @@ export default function InspectionPage() {
                           )}
                         </div>
                       </div>
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <Video className="h-16 w-16 mx-auto mb-4 opacity-50" />
-                          <p className="text-sm opacity-75">Zoom Integration Placeholder</p>
-                          <p className="text-xs opacity-50 mt-2">
-                            In production, Zoom SDK will render here
-                          </p>
-                        </div>
+                    </div>
+                  ) : zoomSignature && meetingInfo && session?.user ? (
+                    <ZoomMeeting
+                      meetingNumber={meetingInfo.meetingId}
+                      password={meetingInfo.password}
+                      userName={session.user.name || session.user.email}
+                      userEmail={session.user.email}
+                      signature={zoomSignature}
+                      onMeetingEnd={() => {
+                        setIsInspecting(false);
+                        queryClient.invalidateQueries({ queryKey: ["inspection", id] });
+                      }}
+                      onError={(error) => {
+                        console.error("Zoom error:", error);
+                      }}
+                    />
+                  ) : (
+                    <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                      <div className="text-center space-y-4">
+                        <Video className="h-16 w-16 text-muted-foreground mx-auto" />
+                        <p className="text-sm text-muted-foreground">
+                          Initializing video call...
+                        </p>
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    {isInspector && aiDetectionEnabled && isInspecting && (
-                      <div className="absolute top-4 right-4 space-y-2">
-                        {aiSuggestions?.suggestions?.map((suggestion: any, index: number) => (
-                          <div
-                            key={index}
-                            className="bg-yellow-500/90 backdrop-blur text-yellow-900 px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2 animate-pulse"
-                          >
-                            <Zap className="h-4 w-4" />
-                            {suggestion.name} detected ({Math.round(suggestion.confidence * 100)}%)
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  {isInspector && aiDetectionEnabled && isInspecting && (
+                    <div className="absolute top-4 right-4 space-y-2 pointer-events-none">
+                      {aiSuggestions?.suggestions?.map((suggestion: any, index: number) => (
+                        <div
+                          key={index}
+                          className="bg-yellow-500/90 backdrop-blur text-yellow-900 px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2 animate-pulse"
+                        >
+                          <Zap className="h-4 w-4" />
+                          {suggestion.name} detected ({Math.round(suggestion.confidence * 100)}%)
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {isInspecting && (
                     <div className="flex items-center justify-center gap-4 mt-4">

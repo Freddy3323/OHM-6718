@@ -15,6 +15,13 @@
       "when": 1763865473723,
       "tag": "0001_closed_shen",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1763870616911,
+      "tag": "0002_fixed_exiles",
+      "breakpoints": true
     }
   ]
 }

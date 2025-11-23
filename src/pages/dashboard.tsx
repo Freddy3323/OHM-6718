@@ -238,10 +238,12 @@ export default function Dashboard() {
 
                             <div className="flex flex-wrap gap-2">
                               {booking.status === "confirmed" && booking.zoomJoinUrl && (
-                                <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-                                  <Video className="h-4 w-4 mr-2" />
-                                  Join Video Call
-                                </Button>
+                                <a href={booking.zoomJoinUrl} target="_blank" rel="noopener noreferrer">
+                                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                                    <Video className="h-4 w-4 mr-2" />
+                                    Join Video Call
+                                  </Button>
+                                </a>
                               )}
                               {booking.status === "completed" && (
                                 <Link href={`/inspection/${booking.id}`}>
@@ -251,9 +253,11 @@ export default function Dashboard() {
                                   </Button>
                                 </Link>
                               )}
-                              <Button size="sm" variant="ghost">
-                                View Details
-                              </Button>
+                              <Link href={`/inspection/${booking.id}`}>
+                                <Button size="sm" variant="ghost">
+                                  View Details
+                                </Button>
+                              </Link>
                             </div>
                           </CardContent>
                         </Card>
