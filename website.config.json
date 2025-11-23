@@ -1,14 +1,14 @@
 {
   "site": {
-    "name": "Minimal Starter",
-    "tagline": "Your Creative Canvas",
-    "description": "A clean, minimal starter template providing the perfect foundation for your next project. Built with modern tools and ready for your creativity.",
-    "ogImage": "/og-image.png",
+    "name": "OpenHomeMate",
+    "tagline": "AI-Powered Building Inspection Excellence",
+    "description": "Professional Australian building inspections with AI-powered defect detection. Over 30 years of expertise delivering comprehensive reports through live virtual inspections.",
+    "ogImage": "/hero-inspector.png",
     "twitterHandle": "",
     "contact": {
-      "email": "contact@example.com",
-      "company": "Your Company",
-      "address": ""
+      "email": "info@openhomemate.com.au",
+      "company": "OpenHomeMate",
+      "address": "Australia"
     },
     "legal": {
       "privacyPolicy": "/privacy",
@@ -16,6 +16,6 @@
     }
   },
   "theme": {
-    "defaultTheme": "dark"
+    "defaultTheme": "light"
   }
 }

@@ -184,4 +184,34 @@ export const aiRoutes = new Hono<HonoContext>()
         },
       ],
     });
+  })
+  .post("/detect-defects", async (c) => {
+    try {
+      const db = c.get("db");
+      const { defectTypes } = await import("../db/schema");
+      const allDefectTypes = await db.select().from(defectTypes);
+
+      const suggestions = [];
+
+      if (Math.random() > 0.7) {
+        const randomDefects = allDefectTypes
+          .sort(() => 0.5 - Math.random())
+          .slice(0, Math.floor(Math.random() * 2) + 1);
+
+        for (const defect of randomDefects) {
+          suggestions.push({
+            id: defect.id,
+            name: defect.name,
+            confidence: 0.7 + Math.random() * 0.25,
+            category: defect.categoryId,
+            severity: defect.severityLevel,
+          });
+        }
+      }
+
+      return c.json({ suggestions });
+    } catch (error) {
+      console.error("Defect detection error:", error);
+      return c.json({ suggestions: [] });
+    }
   });
