@@ -127,6 +127,59 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-24 bg-gradient-to-br from-amber-50 via-amber-100/50 to-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,166,35,0.1),transparent_70%)]" />
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary bg-background/50 backdrop-blur-sm">
+              <Video className="h-3 w-3 mr-1.5" />
+              See It In Action
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              See How It Works
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Watch a live building inspection in action and discover how easy it is to get expert guidance from anywhere
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-amber-400/20 to-amber-600/10 p-2">
+              <div className="relative rounded-2xl overflow-hidden bg-black shadow-inner">
+                <video
+                  className="w-full aspect-video"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="OpenHomeMate demo video showing live building inspection"
+                >
+                  <source src="/demo-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            <div className="text-center mt-12 space-y-6">
+              <p className="text-lg text-muted-foreground">
+                See why thousands of homeowners trust OpenHomeMate for their building inspections
+              </p>
+              <Link href="/booking">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all group"
+                >
+                  <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                  Ready to Book Your Inspection?
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="py-24 bg-gradient-to-b from-background to-amber-50/30">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
