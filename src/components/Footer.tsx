@@ -11,11 +11,11 @@ export default function Footer() {
               <img src="/logo.png" alt="OpenHomeMate" className="h-10 w-auto" />
               <div className="flex flex-col">
                 <span className="font-bold text-lg text-foreground">OpenHomeMate</span>
-                <span className="text-xs text-primary font-medium">Your Builder In Your Pocket</span>
+                <span className="text-xs text-primary font-medium">Your Builder at Every Open Home</span>
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Live remote building inspections via Zoom. Expert support you can trust, with 30+ years of professional experience.
+              OpenHomeMate provides quick video property assessments at open homes. Not a replacement for comprehensive pre-purchase building inspections. Licensed builder visual assessment only.
             </p>
             <div className="space-y-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-3">
@@ -28,7 +28,7 @@ export default function Footer() {
                 <div className="h-9 w-9 rounded-2xl bg-amber-100 flex items-center justify-center">
                   <Mail className="h-4 w-4 text-primary" />
                 </div>
-                <a href="mailto:info@openhousemate.com" className="hover:text-primary transition">info@openhousemate.com</a>
+                <a href="mailto:info@openhomemate.com" className="hover:text-primary transition">info@openhomemate.com</a>
               </div>
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-2xl bg-amber-100 flex items-center justify-center">
@@ -42,9 +42,9 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-foreground">Services</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="/#services" className="hover:text-primary transition">Virtual Inspections</a></li>
-              <li><a href="/#services" className="hover:text-primary transition">Smart Technology</a></li>
-              <li><a href="/#services" className="hover:text-primary transition">Instant Reports</a></li>
+              <li><a href="/#pricing" className="hover:text-primary transition">Pricing</a></li>
+              <li><a href="/#what-we-check" className="hover:text-primary transition">What We Check</a></li>
+              <li><a href="/#how-it-works" className="hover:text-primary transition">How It Works</a></li>
             </ul>
           </div>
 
@@ -69,7 +69,7 @@ export default function Footer() {
 
         <div className="border-t pt-8 space-y-6">
           <div className="text-xs text-muted-foreground leading-relaxed bg-amber-50/50 p-4 rounded-2xl">
-            <strong className="text-foreground">Liability Disclaimer:</strong> Building inspections are visual assessments only. OpenHomeMate and its inspectors are not liable for hidden defects, structural issues not visible during inspection, or subsequent property damage. Professional indemnity insurance details available upon request.
+            <strong className="text-foreground">Important:</strong> OpenHomeMate provides fast, visual-only property assessments via video call during open homes. This is <strong className="text-foreground">NOT</strong> a comprehensive pre-purchase building inspection. We provide expert opinion based on visible conditions only, with no access to restricted areas (roofs, subfloors, wall cavities) and no use of tools or testing equipment. Not a substitute for formal pre-purchase inspections. Licensed builder visual assessment only.
           </div>
           
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
