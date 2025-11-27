@@ -82,6 +82,55 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SEE IT IN ACTION - DEMO VIDEO */}
+      <section className="relative py-20 md:py-24 bg-gradient-to-br from-amber-50 via-cream to-amber-100/30 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(245,166,35,0.08),transparent_70%)]" />
+        <div className="container relative mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-5xl space-y-8">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                See It In Action
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Watch how Open Home Mate transforms property inspections with AI-powered analysis and expert verification — delivering detailed reports in just 60 minutes.
+              </p>
+            </div>
+
+            <div className="relative mx-auto max-w-4xl">
+              <div className="rounded-3xl bg-gradient-to-br from-amber-200/30 to-amber-300/20 p-2">
+                <div className="rounded-2xl overflow-hidden shadow-2xl bg-background">
+                  <video
+                    className="w-full aspect-video"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label="Open Home Mate demo video showing AI-powered inspection process"
+                  >
+                    <source src="/demo-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center space-y-4">
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+                Ready to experience fast, affordable, and reliable building inspections?
+              </p>
+              <Button asChild size="lg" className="rounded-full">
+                <Link to="/booking">
+                  <Video className="mr-2 h-5 w-5" />
+                  Book Your Inspection Now
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TRUTH ABOUT TRADITIONAL INSPECTIONS */}
       <section className="py-20 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
