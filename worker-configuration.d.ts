@@ -19,7 +19,8 @@ declare namespace Cloudflare {
 		ZOOM_ACCOUNT_ID: string;
 		TWILIO_ACCOUNT_SID: string;
 		TWILIO_AUTH_TOKEN: string;
-		TWILIO_PHONE_NUMBER: string;
+		TWILIO_NUMBER: string;
+		MATT_NUMBER: string;
 		MESSAGEMIND_API_KEY: string;
 		D1: D1Database;
 		ASSETS: Fetcher;
@@ -30,7 +31,7 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "BETTER_AUTH_SECRET" | "RUNABLE_SECRET" | "AUTUMN_SECRET_KEY" | "AUTUMN_SECRET_KEY_PROD" | "RUNABLE_GATEWAY_URL" | "VITE_BETTER_AUTH_URL" | "ADMIN_EMAIL" | "VITE_ZOOM_SDK_KEY" | "ZOOM_SDK_KEY" | "ZOOM_SDK_SECRET" | "ZOOM_ACCOUNT_ID" | "TWILIO_ACCOUNT_SID" | "TWILIO_AUTH_TOKEN" | "TWILIO_PHONE_NUMBER" | "MESSAGEMIND_API_KEY">> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "BETTER_AUTH_SECRET" | "RUNABLE_SECRET" | "AUTUMN_SECRET_KEY" | "AUTUMN_SECRET_KEY_PROD" | "RUNABLE_GATEWAY_URL" | "VITE_BETTER_AUTH_URL" | "ADMIN_EMAIL" | "VITE_ZOOM_SDK_KEY" | "ZOOM_SDK_KEY" | "ZOOM_SDK_SECRET" | "ZOOM_ACCOUNT_ID" | "TWILIO_ACCOUNT_SID" | "TWILIO_AUTH_TOKEN" | "TWILIO_NUMBER" | "MATT_NUMBER" | "MESSAGEMIND_API_KEY">> {}
 }
 
 // Begin runtime types

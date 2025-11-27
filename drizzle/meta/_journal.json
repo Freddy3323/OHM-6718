@@ -22,6 +22,13 @@
       "when": 1763870616911,
       "tag": "0002_fixed_exiles",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1764248047151,
+      "tag": "0003_loose_titania",
+      "breakpoints": true
     }
   ]
 }

@@ -38,28 +38,49 @@ export const inspections = sqliteTable("inspections", {
   updatedAt: integer("updated_at", { mode: "timestamp" }).defaultNow().$onUpdate(() => new Date()).notNull(),
 });
 
-export const defectCategories = sqliteTable("defect_categories", {
+export const defects = sqliteTable("defects", {
   id: text("id").primaryKey(),
-  name: text("name").notNull(),
-  description: text("description"),
-  sortOrder: integer("sort_order").default(0),
+  code: text("code").notNull().unique(),
+  title: text("title").notNull(),
+  element: text("element", { enum: ["waterproofing", "fire_safety", "structure", "building_enclosure", "services"] }).notNull(),
+  system: text("system"),
+  locationType: text("location_type"),
+  isResidential: integer("is_residential", { mode: "boolean" }).default(true),
+  isCommercial: integer("is_commercial", { mode: "boolean" }).default(false),
+  nccReference: text("ncc_reference"),
+  standardReference: text("standard_reference"),
+  stateApplicability: text("state_applicability", { mode: "json" }).$type<string[]>(),
+  sourceDocument: text("source_document"),
+  summaryForBuyer: text("summary_for_buyer"),
+  technicalDescription: text("technical_description"),
+  possibleConsequences: text("possible_consequences"),
+  recommendedRectification: text("recommended_rectification"),
+  urgency: text("urgency", { enum: ["immediate", "urgent", "moderate", "low", "cosmetic"] }),
+  riskCategory: text("risk_category", { enum: ["safety", "major", "minor", "compliance"] }),
+  aiTags: text("ai_tags", { mode: "json" }).$type<string[]>(),
+  exampleImageUrls: text("example_image_urls", { mode: "json" }).$type<string[]>(),
+  aiConfidenceThreshold: real("ai_confidence_threshold"),
+  createdBy: text("created_by"),
+  updatedBy: text("updated_by"),
+  createdAt: integer("created_at", { mode: "timestamp" }).defaultNow().notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).defaultNow().$onUpdate(() => new Date()).notNull(),
+  version: integer("version").default(1).notNull(),
 });
 
-export const defectTypes = sqliteTable("defect_types", {
+export const defectImages = sqliteTable("defect_images", {
   id: text("id").primaryKey(),
-  categoryId: text("category_id").references(() => defectCategories.id).notNull(),
-  name: text("name").notNull(),
-  description: text("description"),
-  standardsReference: text("standards_reference"),
-  severityLevel: text("severity_level"),
-  commonCauses: text("common_causes"),
-  aiDetectionKeywords: text("ai_detection_keywords"),
+  defectId: text("defect_id").references(() => defects.id, { onDelete: "cascade" }).notNull(),
+  imageUrl: text("image_url").notNull(),
+  caption: text("caption"),
+  uploadedBy: text("uploaded_by"),
+  uploadedAt: integer("uploaded_at", { mode: "timestamp" }).defaultNow().notNull(),
+  orderIndex: integer("order_index").notNull().default(0),
 });
 
 export const inspectionDefects = sqliteTable("inspection_defects", {
   id: text("id").primaryKey(),
   inspectionId: text("inspection_id").references(() => inspections.id, { onDelete: "cascade" }).notNull(),
-  defectTypeId: text("defect_type_id").references(() => defectTypes.id),
+  defectId: text("defect_id").references(() => defects.id),
   customDefectName: text("custom_defect_name"),
   location: text("location").notNull(),
   severity: text("severity").notNull(),
