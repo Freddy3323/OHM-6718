@@ -112,7 +112,7 @@ export default function Dashboard() {
               </p>
             </div>
             <Link href="/booking">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-primary rounded-full hover:bg-primary/90 text-white">
                 <Calendar className="mr-2 h-4 w-4" />
                 New Booking
               </Button>
@@ -129,7 +129,7 @@ export default function Dashboard() {
                       {bookings?.bookings?.length || 0}
                     </p>
                   </div>
-                  <Calendar className="h-8 w-8 text-blue-600" />
+                  <Calendar className="h-8 w-8 text-primary" />
                 </div>
               </CardContent>
             </Card>
@@ -204,7 +204,7 @@ export default function Dashboard() {
                         Schedule your first building inspection
                       </p>
                       <Link href="/booking">
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                        <Button className="bg-primary rounded-full hover:bg-primary/90 text-white">
                           Book Inspection
                         </Button>
                       </Link>
@@ -212,12 +212,12 @@ export default function Dashboard() {
                   ) : (
                     <div className="space-y-4">
                       {bookings?.bookings?.map((booking: any) => (
-                        <Card key={booking.id} className="border-2 hover:border-blue-600 transition">
+                        <Card key={booking.id} className="border-2 hover:border-primary transition">
                           <CardContent className="p-6">
                             <div className="flex items-start justify-between mb-4">
                               <div className="flex items-start gap-4">
-                                <div className="h-12 w-12 rounded-lg bg-blue-600/10 flex items-center justify-center">
-                                  <Home className="h-6 w-6 text-blue-600" />
+                                <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                                  <Home className="h-6 w-6 text-primary" />
                                 </div>
                                 <div>
                                   <h4 className="font-semibold text-lg text-foreground mb-1">
@@ -239,7 +239,7 @@ export default function Dashboard() {
                             <div className="flex flex-wrap gap-2">
                               {booking.status === "confirmed" && booking.zoomJoinUrl && (
                                 <a href={booking.zoomJoinUrl} target="_blank" rel="noopener noreferrer">
-                                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-white">
                                     <Video className="h-4 w-4 mr-2" />
                                     Join Video Call
                                   </Button>
@@ -295,7 +295,7 @@ export default function Dashboard() {
                             <CardContent className="p-6">
                               <div className="flex items-start justify-between mb-4">
                                 <div className="flex items-start gap-4">
-                                  <div className="h-12 w-12 rounded-lg bg-purple-600/10 flex items-center justify-center">
+                                  <div className="h-12 w-12 rounded-2xl bg-purple-600/10 flex items-center justify-center">
                                     <Video className="h-6 w-6 text-purple-600" />
                                   </div>
                                   <div>
@@ -316,7 +316,7 @@ export default function Dashboard() {
                               <div className="flex flex-wrap gap-2">
                                 {inspection.status === "scheduled" && (
                                   <Link href={`/inspection/${inspection.id}`}>
-                                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                                    <Button size="sm" className="bg-primary hover:bg-primary/90 text-white">
                                       <Video className="h-4 w-4 mr-2" />
                                       Start Inspection
                                     </Button>

@@ -6,42 +6,43 @@ import Footer from "@/components/Footer";
 import {
   CheckCircle2,
   Video,
-  Brain,
+  Heart,
   FileCheck,
   Shield,
   Clock,
   Calendar,
   MessageSquare,
   Award,
-  Zap,
-  Search,
+  Sparkles,
+  Home as HomeIcon,
+  Star,
 } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b bg-background/95 backdrop-blur sticky top-0 z-50">
+      <header className="border-b bg-background/95 backdrop-blur sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
               src="/logo.png"
-              alt="OpenHouseMate.com"
-              className="h-10 w-auto"
+              alt="OpenHomeMate"
+              className="h-12 w-auto"
             />
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-foreground">OpenHouseMate.com</span>
-              <span className="text-xs text-muted-foreground">Building Inspection Specialists</span>
+              <span className="font-bold text-xl text-foreground">OpenHomeMate</span>
+              <span className="text-xs text-muted-foreground">Your Builder In Your Pocket</span>
             </div>
           </div>
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#services" className="text-sm font-medium text-muted-foreground hover:text-foreground transition">
+            <a href="#services" className="text-sm font-medium text-muted-foreground hover:text-primary transition">
               Services
             </a>
-            <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-foreground transition">
+            <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-primary transition">
               How It Works
             </a>
-            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition">
-              Features
+            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-primary transition">
+              Why Choose Us
             </a>
             <Link href="/dashboard">
               <Button variant="ghost" size="sm">
@@ -49,162 +50,188 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/booking">
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-                Book Inspection
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-md">
+                Book My Inspection
               </Button>
             </Link>
           </nav>
         </div>
       </header>
 
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-background -z-10" />
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-background to-amber-50/30 -z-10" />
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge variant="secondary" className="w-fit">
-                <Award className="h-3 w-3 mr-1" />
-                30+ Years of Expertise
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <Badge variant="secondary" className="w-fit rounded-full px-4 py-1.5 shadow-sm">
+                <Award className="h-3 w-3 mr-1.5" />
+                30+ Years of Trusted Expertise
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
-                AI-Powered Building Inspections
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                Professional Australian residential building inspections with cutting-edge AI defect detection. Get comprehensive reports delivered instantly through live virtual inspections.
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight tracking-tight">
+                  Your Builder In Your Pocket
+                </h1>
+                <p className="text-2xl text-primary font-semibold">
+                  Live Remote Building Inspections via Zoom
+                </p>
+              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Get expert building inspections from the comfort of your home. Join a live video call with a qualified builder who'll guide you through every detail, answer all your questions, and deliver a comprehensive report instantly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/booking">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto rounded-full shadow-lg hover:shadow-xl transition-all">
                     <Calendar className="mr-2 h-5 w-5" />
-                    Book Now
+                    Book My Inspection
                   </Button>
                 </Link>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+                  className="w-full sm:w-auto rounded-full border-2 border-primary text-primary hover:bg-amber-50"
                   onClick={() => window.location.href = 'sms:0468046283'}
                 >
                   <MessageSquare className="mr-2 h-5 w-5" />
-                  Chat with AI Assistant
+                  Chat With Us
                 </Button>
               </div>
-              <div className="flex items-center gap-8 pt-4">
-                <div>
-                  <div className="text-2xl font-bold text-foreground">10,000+</div>
-                  <div className="text-sm text-muted-foreground">Inspections Completed</div>
-                </div>
-                <div className="h-10 w-px bg-border" />
-                <div>
-                  <div className="text-2xl font-bold text-foreground">99.8%</div>
-                  <div className="text-sm text-muted-foreground">Accuracy Rate</div>
-                </div>
-                <div className="h-10 w-px bg-border" />
-                <div>
-                  <div className="text-2xl font-bold text-foreground">24hr</div>
-                  <div className="text-sm text-muted-foreground">Report Delivery</div>
+              <div className="flex items-center gap-6 pt-4 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center text-white text-xs border-2 border-background">
+                      <Star className="w-4 h-4 fill-white" />
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white text-xs border-2 border-background">
+                      <Star className="w-4 h-4 fill-white" />
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center text-white text-xs border-2 border-background">
+                      <Star className="w-4 h-4 fill-white" />
+                    </div>
+                  </div>
+                  <div className="text-sm">
+                    <div className="font-semibold text-foreground">10,000+ Happy Homeowners</div>
+                    <div className="text-muted-foreground">99.8% Customer Satisfaction</div>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent rounded-2xl blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-amber-400/30 to-amber-600/20 rounded-3xl blur-3xl" />
               <img
-                src="/hero-inspector.png"
+                src="/branding-hero.png"
                 alt="Professional Building Inspector"
-                className="relative rounded-2xl shadow-2xl w-full"
+                className="relative rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services" className="py-20 bg-muted/30">
+      <section id="services" className="py-24 bg-gradient-to-b from-background to-amber-50/30">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4">
-              Our Services
+            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
+              What We Offer
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Comprehensive Building Inspection Solutions
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Expert Support You Can Trust
             </h2>
-            <p className="text-muted-foreground">
-              Combining decades of professional experience with advanced AI technology for thorough, accurate inspections
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Combining decades of professional experience with cutting-edge care for thorough, reliable inspections
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-2 hover:border-blue-600 transition">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-blue-600/10 flex items-center justify-center">
-                  <Video className="h-6 w-6 text-blue-600" />
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
+                  <Video className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Virtual Inspections</h3>
-                <p className="text-muted-foreground">
-                  Live video inspections via Zoom with real-time interaction. No need to be on-site, we bring the inspection to you.
+                <h3 className="text-2xl font-semibold text-foreground">Save Time & Travel</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Live video inspections via Zoom with real-time interaction. No need to be on-site—inspect from anywhere, anytime.
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     HD Video Quality
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     Real-time Communication
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
-                    Recorded for Reference
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
+                    Recorded for Your Records
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:border-blue-600 transition">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-blue-600/10 flex items-center justify-center">
-                  <Brain className="h-6 w-6 text-blue-600" />
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
+                  <Sparkles className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">AI Defect Detection</h3>
-                <p className="text-muted-foreground">
-                  Advanced AI analyzes live video to identify potential defects instantly, ensuring nothing is missed.
+                <h3 className="text-2xl font-semibold text-foreground">Smart & Reliable</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Advanced technology analyzes live video to identify potential issues instantly, ensuring nothing is missed.
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     Instant Recognition
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     Australian Standards Database
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     99.8% Accuracy
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:border-blue-600 transition">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-blue-600/10 flex items-center justify-center">
-                  <FileCheck className="h-6 w-6 text-blue-600" />
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-6">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
+                  <FileCheck className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Instant Reports</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-2xl font-semibold text-foreground">Clear Answers, Peace of Mind</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Comprehensive reports generated in real-time during inspection, delivered immediately after completion.
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
-                    Professional PDF Format
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
+                    Easy-to-Read PDF Format
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     Photo Documentation
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
                     Standards Compliance
                   </li>
                 </ul>
@@ -214,68 +241,68 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="py-20">
+      <section id="how-it-works" className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4">
-              Simple Process
+            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
+              Simple & Easy
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               How It Works
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Get your professional building inspection in just four simple steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-16 w-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   1
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Book Online</h3>
-                <p className="text-muted-foreground">
-                  Choose your preferred date and time. Fill in property details and confirm your booking instantly.
+                <h3 className="text-xl font-semibold text-foreground">Book in Minutes</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Choose your preferred date and time. Fill in your property details and confirm your booking instantly online.
                 </p>
               </div>
-              <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border -z-10" />
+              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
             </div>
 
             <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-16 w-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   2
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Get Confirmed</h3>
-                <p className="text-muted-foreground">
-                  Receive instant confirmation via SMS and email with Zoom meeting details for your inspection.
+                <h3 className="text-xl font-semibold text-foreground">We'll Confirm & Connect</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Receive instant confirmation via SMS and email with your Zoom meeting details for the inspection.
                 </p>
               </div>
-              <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border -z-10" />
+              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
             </div>
 
             <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-16 w-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   3
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Live Inspection</h3>
-                <p className="text-muted-foreground">
-                  Join the video call as our expert conducts a thorough inspection with AI-powered defect detection.
+                <h3 className="text-xl font-semibold text-foreground">Join Your Personal Inspection</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Join the video call as your expert builder conducts a thorough inspection and answers all your questions.
                 </p>
               </div>
-              <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border -z-10" />
+              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
             </div>
 
             <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-16 w-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   4
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Receive Report</h3>
-                <p className="text-muted-foreground">
-                  Get your comprehensive inspection report immediately after completion with all findings documented.
+                <h3 className="text-xl font-semibold text-foreground">Get Your Report Instantly</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Receive your comprehensive inspection report immediately after completion with all findings clearly documented.
                 </p>
               </div>
             </div>
@@ -283,55 +310,55 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="features" className="py-20 bg-muted/30">
+      <section id="features" className="py-24 bg-gradient-to-b from-amber-50/30 to-background">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div>
               <img
                 src="/virtual-inspection.png"
                 alt="Virtual Inspection"
-                className="rounded-2xl shadow-xl w-full"
+                className="rounded-3xl shadow-2xl w-full"
               />
             </div>
-            <div className="space-y-6">
-              <Badge variant="outline">Technology Advantage</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Advanced Virtual Inspection Platform
+            <div className="space-y-8">
+              <Badge variant="outline" className="rounded-full border-primary/30 text-primary">Why Choose Us</Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+                Convenience Meets Expertise
               </h2>
-              <p className="text-muted-foreground text-lg">
-                Our proprietary platform combines professional expertise with cutting-edge AI to deliver unmatched inspection quality and convenience.
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our approach combines professional expertise with modern convenience to deliver unmatched inspection quality and peace of mind.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-blue-600/10 flex items-center justify-center flex-shrink-0">
-                    <Zap className="h-5 w-5 text-blue-600" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <Heart className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Real-Time AI Analysis</h4>
-                    <p className="text-sm text-muted-foreground">
-                      AI identifies potential defects during live inspection, alerting the inspector immediately.
+                    <h4 className="font-semibold text-lg text-foreground mb-2">Confident Decisions</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Understand your property's condition clearly so you can buy or sell with complete confidence and peace of mind.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-blue-600/10 flex items-center justify-center flex-shrink-0">
-                    <Search className="h-5 w-5 text-blue-600" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <HomeIcon className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Comprehensive Defect Database</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Access to thousands of Australian residential building defects and standards references.
+                    <h4 className="font-semibold text-lg text-foreground mb-2">Clear Reports That Make Sense</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Easy-to-understand reports with thousands of Australian building standards and defect references.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-blue-600/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="h-5 w-5 text-blue-600" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <Clock className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Instant Report Generation</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Professional reports created automatically during inspection with all defects documented.
+                    <h4 className="font-semibold text-lg text-foreground mb-2">Instant Clarity</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Professional reports created automatically during inspection with all issues documented and explained clearly.
                     </p>
                   </div>
                 </div>
@@ -341,48 +368,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 order-2 md:order-1">
-              <Badge variant="outline">Australian Compliance</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div className="space-y-8 order-2 md:order-1">
+              <Badge variant="outline" className="rounded-full border-primary/30 text-primary">Australian Compliance</Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
                 Built for Australian Building Standards
               </h2>
-              <p className="text-muted-foreground text-lg">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Our system is specifically designed around Australian building codes, NCC requirements, and NSW Building Commission standards.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-blue-600/10 flex items-center justify-center flex-shrink-0">
-                    <Shield className="h-5 w-5 text-blue-600" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <Shield className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">NCC Compliant</h4>
-                    <p className="text-sm text-muted-foreground">
-                      All inspections reference National Construction Code requirements and guidelines.
+                    <h4 className="font-semibold text-lg text-foreground mb-2">NCC Compliant</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      All inspections reference National Construction Code requirements and guidelines for your protection.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-blue-600/10 flex items-center justify-center flex-shrink-0">
-                    <FileCheck className="h-5 w-5 text-blue-600" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <FileCheck className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Standards Reference</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Every defect linked to relevant Australian Standards for complete transparency.
+                    <h4 className="font-semibold text-lg text-foreground mb-2">Standards Reference</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Every finding linked to relevant Australian Standards for complete transparency and clarity.
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-blue-600/10 flex items-center justify-center flex-shrink-0">
-                    <Award className="h-5 w-5 text-blue-600" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                    <Award className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Certified Inspectors</h4>
-                    <p className="text-sm text-muted-foreground">
-                      All inspections conducted by licensed professionals with 30+ years combined experience.
+                    <h4 className="font-semibold text-lg text-foreground mb-2">Qualified Professionals</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      All inspections conducted by licensed builders with 30+ years combined experience you can trust.
                     </p>
                   </div>
                 </div>
@@ -392,101 +419,110 @@ export default function Home() {
               <img
                 src="/defect-detection.png"
                 alt="Defect Detection"
-                className="rounded-2xl shadow-xl w-full"
+                className="rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
+      <section className="py-24 bg-gradient-to-b from-background to-amber-50/30">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <Badge variant="outline" className="mb-4">
-              Professional Excellence
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
+              Trusted Excellence
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Trusted by Thousands of Australians
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Trusted by Thousands of Homeowners
             </h2>
+            <p className="text-lg text-muted-foreground">
+              Join thousands of happy customers who've experienced our professional, caring service
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            <Card className="text-center border-2">
-              <CardContent className="p-6">
-                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-8 w-8 text-blue-600" />
+          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8">
+                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Shield className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="font-bold text-2xl text-foreground mb-2">Licensed & Insured</h3>
-                <p className="text-sm text-muted-foreground">Full professional indemnity coverage</p>
+                <h3 className="font-bold text-2xl text-foreground mb-3">Licensed & Insured</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Full professional coverage for your peace of mind</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-2">
-              <CardContent className="p-6">
-                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-8 w-8 text-blue-600" />
+            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8">
+                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Award className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="font-bold text-2xl text-foreground mb-2">30+ Years</h3>
-                <p className="text-sm text-muted-foreground">Of professional experience</p>
+                <h3 className="font-bold text-2xl text-foreground mb-3">30+ Years</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Of trusted professional experience</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-2">
-              <CardContent className="p-6">
-                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="h-8 w-8 text-blue-600" />
+            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8">
+                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <CheckCircle2 className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="font-bold text-2xl text-foreground mb-2">10,000+</h3>
-                <p className="text-sm text-muted-foreground">Inspections completed</p>
+                <h3 className="font-bold text-2xl text-foreground mb-3">10,000+</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Happy homeowners served</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-2">
-              <CardContent className="p-6">
-                <div className="h-16 w-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-8 w-8 text-blue-600" />
+            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8">
+                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Star className="h-10 w-10 text-white fill-white" />
                 </div>
-                <h3 className="font-bold text-2xl text-foreground mb-2">99.8%</h3>
-                <p className="text-sm text-muted-foreground">Accuracy rate</p>
+                <h3 className="font-bold text-2xl text-foreground mb-3">99.8%</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Customer satisfaction rate</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-blue-600 text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+        <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold">
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               Ready to Get Your Property Inspected?
             </h2>
-            <p className="text-xl text-blue-100">
-              Book your AI-powered building inspection today and receive your comprehensive report within 24 hours.
+            <p className="text-xl text-amber-50 leading-relaxed">
+              Book your live video building inspection today and receive your comprehensive report instantly. Your peace of mind is just a click away.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link href="/booking">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+                <Button size="lg" className="bg-white text-amber-600 hover:bg-amber-50 w-full sm:w-auto rounded-full shadow-xl hover:shadow-2xl transition-all font-semibold">
                   <Calendar className="mr-2 h-5 w-5" />
-                  Book Inspection Now
+                  Book My Inspection
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 w-full sm:w-auto">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-transparent border-2 border-white text-white hover:bg-white/10 w-full sm:w-auto rounded-full font-semibold"
+                onClick={() => window.location.href = 'sms:0468046283'}
+              >
                 <MessageSquare className="mr-2 h-5 w-5" />
-                Chat with AI Assistant
+                Chat With Your Builder
               </Button>
             </div>
-            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-blue-100">
+            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-amber-50">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5" />
                 30+ Years Experience
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5" />
-                99.8% Accuracy
+                99.8% Satisfaction
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5" />
-                24hr Delivery
+                Instant Reports
               </div>
             </div>
           </div>

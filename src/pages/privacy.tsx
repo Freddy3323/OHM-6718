@@ -139,7 +139,7 @@ export default function Privacy() {
               <li><strong>Withdraw Consent:</strong> Withdraw consent for marketing communications</li>
             </ul>
             <p className="text-muted-foreground leading-relaxed mt-4">
-              To exercise these rights, contact us at <a href="mailto:info@openhousemate.com" className="text-blue-600 hover:underline">info@openhousemate.com</a> or call 0468 046 283.
+              To exercise these rights, contact us at <a href="mailto:info@openhousemate.com" className="text-primary hover:underline">info@openhousemate.com</a> or call 0468 046 283.
             </p>
           </section>
 
@@ -176,10 +176,10 @@ export default function Privacy() {
             <p className="text-muted-foreground leading-relaxed mb-4">
               For privacy-related inquiries or to exercise your rights:
             </p>
-            <div className="bg-muted/50 p-6 rounded-lg space-y-2">
+            <div className="bg-muted/50 p-6 rounded-2xl space-y-2">
               <p className="text-foreground font-semibold">OpenHouseMate.com</p>
-              <p className="text-muted-foreground">Email: <a href="mailto:info@openhousemate.com" className="text-blue-600 hover:underline">info@openhousemate.com</a></p>
-              <p className="text-muted-foreground">Phone: <a href="tel:0468046283" className="text-blue-600 hover:underline">0468 046 283</a></p>
+              <p className="text-muted-foreground">Email: <a href="mailto:info@openhousemate.com" className="text-primary hover:underline">info@openhousemate.com</a></p>
+              <p className="text-muted-foreground">Phone: <a href="tel:0468046283" className="text-primary hover:underline">0468 046 283</a></p>
               <p className="text-muted-foreground">Address: Sydney, Australia</p>
             </div>
           </section>
@@ -187,7 +187,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl font-semibold text-foreground mb-4">12. Complaints</h2>
             <p className="text-muted-foreground leading-relaxed">
-              If you believe we have breached your privacy rights, you can lodge a complaint with us. If you are not satisfied with our response, you may contact the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a>.
+              If you believe we have breached your privacy rights, you can lodge a complaint with us. If you are not satisfied with our response, you may contact the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a>.
             </p>
           </section>
         </div>

@@ -147,7 +147,7 @@ export function SubscriptionStatus({ userId }: { userId: string }) {
         </div>
 
         {subscription.trialEnd && isTrialing && (
-          <div className="bg-accent/40 p-3 rounded-lg">
+          <div className="bg-accent/40 p-3 rounded-2xl">
             <div className="flex items-center gap-2 text-foreground">
               <Clock className="h-4 w-4" />
               <span className="text-sm font-medium">Trial Active</span>
@@ -163,7 +163,7 @@ export function SubscriptionStatus({ userId }: { userId: string }) {
         )}
 
         {subscription.cancelAtPeriodEnd && (
-          <div className="bg-accent/40 p-3 rounded-lg">
+          <div className="bg-accent/40 p-3 rounded-2xl">
             <div className="flex items-center gap-2 text-foreground">
               <AlertCircle className="h-4 w-4" />
               <span className="text-sm font-medium">Canceling at Period End</span>
@@ -179,7 +179,7 @@ export function SubscriptionStatus({ userId }: { userId: string }) {
         )}
 
         {isCanceled && !subscription.cancelAtPeriodEnd && (
-          <div className="bg-destructive/10 p-3 rounded-lg">
+          <div className="bg-destructive/10 p-3 rounded-2xl">
             <div className="flex items-center gap-2 text-destructive">
               <AlertCircle className="h-4 w-4" />
               <span className="text-sm font-medium">Canceled</span>

@@ -81,7 +81,7 @@ export function ZoomMeeting({
 
   if (error) {
     return (
-      <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+      <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
         <div className="text-center space-y-4 p-8">
           <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mx-auto">
             <Video className="h-6 w-6 text-red-600" />
@@ -96,7 +96,7 @@ export function ZoomMeeting({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-primary hover:bg-primary/90 text-white">
                 Open in Zoom Web Client
               </Button>
             </a>
@@ -108,9 +108,9 @@ export function ZoomMeeting({
 
   if (isLoading) {
     return (
-      <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+      <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Loader2 className="h-12 w-12 text-blue-600 mx-auto animate-spin" />
+          <Loader2 className="h-12 w-12 text-primary mx-auto animate-spin" />
           <p className="text-sm text-muted-foreground">
             Connecting to Zoom meeting...
           </p>
@@ -120,7 +120,7 @@ export function ZoomMeeting({
   }
 
   return (
-    <div className="aspect-video bg-black rounded-lg overflow-hidden relative">
+    <div className="aspect-video bg-black rounded-2xl overflow-hidden relative">
       <div ref={meetingSDKElement} className="w-full h-full" />
     </div>
   );

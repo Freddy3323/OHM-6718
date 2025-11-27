@@ -22,12 +22,12 @@ export const smsRoutes = new Hono<HonoContext>()
       if (
         !env.TWILIO_ACCOUNT_SID ||
         !env.TWILIO_AUTH_TOKEN ||
-        !env.TWILIO_PHONE_NUMBER
+        !env.TWILIO_NUMBER
       ) {
         return c.json(
           {
             error:
-              "Twilio is not configured. Please set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_PHONE_NUMBER in your environment variables.",
+              "Twilio is not configured. Please set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_NUMBER in your environment variables.",
           },
           500
         );
@@ -41,7 +41,7 @@ export const smsRoutes = new Hono<HonoContext>()
 
         const formData = new URLSearchParams();
         formData.append("To", to);
-        formData.append("From", env.TWILIO_PHONE_NUMBER);
+        formData.append("From", env.TWILIO_NUMBER);
         formData.append("Body", message);
 
         const response = await fetch(twilioUrl, {
@@ -108,7 +108,7 @@ export const smsRoutes = new Hono<HonoContext>()
       if (
         !env.TWILIO_ACCOUNT_SID ||
         !env.TWILIO_AUTH_TOKEN ||
-        !env.TWILIO_PHONE_NUMBER
+        !env.TWILIO_NUMBER
       ) {
         return c.json({ error: "Twilio not configured" }, 500);
       }
@@ -121,7 +121,7 @@ export const smsRoutes = new Hono<HonoContext>()
 
         const formData = new URLSearchParams();
         formData.append("To", booking.contactPhone);
-        formData.append("From", env.TWILIO_PHONE_NUMBER);
+        formData.append("From", env.TWILIO_NUMBER);
         formData.append("Body", message);
 
         const response = await fetch(twilioUrl, {
@@ -184,7 +184,7 @@ export const smsRoutes = new Hono<HonoContext>()
       if (
         !env.TWILIO_ACCOUNT_SID ||
         !env.TWILIO_AUTH_TOKEN ||
-        !env.TWILIO_PHONE_NUMBER
+        !env.TWILIO_NUMBER
       ) {
         return c.json({ error: "Twilio not configured" }, 500);
       }
@@ -197,7 +197,7 @@ export const smsRoutes = new Hono<HonoContext>()
 
         const formData = new URLSearchParams();
         formData.append("To", booking.contactPhone);
-        formData.append("From", env.TWILIO_PHONE_NUMBER);
+        formData.append("From", env.TWILIO_NUMBER);
         formData.append("Body", message);
 
         const response = await fetch(twilioUrl, {
@@ -253,7 +253,7 @@ export const smsRoutes = new Hono<HonoContext>()
       if (
         !env.TWILIO_ACCOUNT_SID ||
         !env.TWILIO_AUTH_TOKEN ||
-        !env.TWILIO_PHONE_NUMBER
+        !env.TWILIO_NUMBER
       ) {
         return c.json({ error: "Twilio not configured" }, 500);
       }
@@ -266,7 +266,7 @@ export const smsRoutes = new Hono<HonoContext>()
 
         const formData = new URLSearchParams();
         formData.append("To", booking.contactPhone);
-        formData.append("From", env.TWILIO_PHONE_NUMBER);
+        formData.append("From", env.TWILIO_NUMBER);
         formData.append("Body", message);
 
         const response = await fetch(twilioUrl, {
@@ -319,7 +319,7 @@ export const smsRoutes = new Hono<HonoContext>()
       if (
         !env.TWILIO_ACCOUNT_SID ||
         !env.TWILIO_AUTH_TOKEN ||
-        !env.TWILIO_PHONE_NUMBER
+        !env.TWILIO_NUMBER
       ) {
         return c.json({ error: "Twilio not configured" }, 500);
       }
@@ -332,7 +332,7 @@ export const smsRoutes = new Hono<HonoContext>()
 
         const formData = new URLSearchParams();
         formData.append("To", booking.contactPhone);
-        formData.append("From", env.TWILIO_PHONE_NUMBER);
+        formData.append("From", env.TWILIO_NUMBER);
         formData.append("Body", message);
 
         const response = await fetch(twilioUrl, {

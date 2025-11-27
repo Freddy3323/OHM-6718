@@ -76,16 +76,16 @@ export default function BookingPage() {
                 Thank you for choosing OpenHomeMate
               </p>
             </div>
-            <div className="bg-muted/50 rounded-lg p-6 space-y-2 text-left">
+            <div className="bg-muted/50 rounded-2xl p-6 space-y-2 text-left">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-blue-600 mt-0.5" />
+                <MapPin className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="font-medium">Property Address</div>
                   <div className="text-sm text-muted-foreground">{formData.propertyAddress}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <CalendarIcon className="h-5 w-5 text-blue-600 mt-0.5" />
+                <CalendarIcon className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="font-medium">Scheduled Time</div>
                   <div className="text-sm text-muted-foreground">
@@ -94,7 +94,7 @@ export default function BookingPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-blue-600 mt-0.5" />
+                <Phone className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="font-medium">Contact</div>
                   <div className="text-sm text-muted-foreground">{formData.contactPhone}</div>
@@ -107,7 +107,7 @@ export default function BookingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/dashboard">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  <Button className="bg-primary rounded-full hover:bg-primary/90 text-white">
                     View Dashboard
                   </Button>
                 </Link>
@@ -155,21 +155,21 @@ export default function BookingPage() {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card>
               <CardContent className="p-6 text-center">
-                <CalendarIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                <CalendarIcon className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold text-foreground mb-2">Quick Scheduling</h3>
                 <p className="text-sm text-muted-foreground">Choose your preferred date and time</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold text-foreground mb-2">24hr Turnaround</h3>
                 <p className="text-sm text-muted-foreground">Receive your report within 24 hours</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold text-foreground mb-2">Expert Service</h3>
                 <p className="text-sm text-muted-foreground">30+ years of experience</p>
               </CardContent>
@@ -187,7 +187,7 @@ export default function BookingPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Home className="h-5 w-5 text-blue-600" />
+                    <Home className="h-5 w-5 text-primary" />
                     Property Information
                   </h3>
                   
@@ -238,7 +238,7 @@ export default function BookingPage() {
 
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Mail className="h-5 w-5 text-blue-600" />
+                    <Mail className="h-5 w-5 text-primary" />
                     Contact Information
                   </h3>
 
@@ -282,7 +282,7 @@ export default function BookingPage() {
 
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <CalendarIcon className="h-5 w-5 text-blue-600" />
+                    <CalendarIcon className="h-5 w-5 text-primary" />
                     Schedule Inspection
                   </h3>
 
@@ -323,23 +323,23 @@ export default function BookingPage() {
                   />
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
                   <h4 className="font-semibold text-foreground mb-2">What happens next?</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
                       <span>You'll receive instant confirmation via email and SMS</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
                       <span>Zoom meeting link will be provided for your inspection</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
                       <span>Our expert inspector will conduct a thorough virtual walkthrough</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
                       <span>Comprehensive report delivered within 24 hours</span>
                     </li>
                   </ul>
@@ -348,7 +348,7 @@ export default function BookingPage() {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Button
                     type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white flex-1"
+                    className="bg-primary hover:bg-primary/90 text-white flex-1"
                     disabled={bookingMutation.isPending}
                   >
                     {bookingMutation.isPending ? "Processing..." : "Confirm Booking"}
@@ -361,7 +361,7 @@ export default function BookingPage() {
                 </div>
 
                 {bookingMutation.isError && (
-                  <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg p-4">
+                  <div className="bg-red-50 border border-red-200 text-red-800 rounded-2xl p-4">
                     <p className="font-semibold">Booking Failed</p>
                     <p className="text-sm">
                       {bookingMutation.error?.message || "An error occurred. Please try again."}

@@ -23,8 +23,8 @@ export function MessageMindWidget() {
   return (
     <>
       {isOpen && (
-        <Card className="fixed bottom-24 right-4 w-96 z-50 shadow-2xl border-2 border-blue-600 animate-in slide-in-from-bottom-5">
-          <CardHeader className="bg-blue-600 text-white pb-4">
+        <Card className="fixed bottom-24 right-4 w-96 z-50 shadow-2xl border-2 border-primary animate-in slide-in-from-bottom-5">
+          <CardHeader className="bg-primary text-white pb-4">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg flex items-center gap-2">
                 <MessageCircle className="h-5 w-5" />
@@ -34,7 +34,7 @@ export function MessageMindWidget() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-blue-700 h-8 w-8 p-0"
+                className="text-white hover:bg-primary/90 h-8 w-8 p-0"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -47,7 +47,7 @@ export function MessageMindWidget() {
             <div className="space-y-3">
               <Button
                 onClick={handleCall}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white justify-start"
+                className="w-full bg-primary hover:bg-primary/90 text-white justify-start"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 Call Us: {phoneNumber}
@@ -78,23 +78,23 @@ export function MessageMindWidget() {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <a
                   href="/booking"
-                  className="block hover:text-blue-600 transition"
+                  className="block hover:text-primary transition"
                 >
                   → Book an Inspection
                 </a>
                 <a
                   href="/dashboard"
-                  className="block hover:text-blue-600 transition"
+                  className="block hover:text-primary transition"
                 >
                   → View My Inspections
                 </a>
-                <a href="/#faq" className="block hover:text-blue-600 transition">
+                <a href="/#faq" className="block hover:text-primary transition">
                   → FAQ
                 </a>
               </div>
             </div>
 
-            <div className="bg-blue-50 rounded-lg p-3 text-xs text-muted-foreground">
+            <div className="bg-amber-50 rounded-2xl p-3 text-xs text-muted-foreground">
               <p className="font-semibold text-foreground mb-1">
                 Business Hours
               </p>
@@ -108,7 +108,7 @@ export function MessageMindWidget() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 h-14 w-14 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg flex items-center justify-center z-50 transition-all hover:scale-110 animate-pulse"
+        className="fixed bottom-4 right-4 h-14 w-14 rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg flex items-center justify-center z-50 transition-all hover:scale-110 animate-pulse"
         aria-label="Open chat"
       >
         {isOpen ? (

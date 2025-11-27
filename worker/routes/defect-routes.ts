@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
-import { authenticatedOnly, requireAdmin } from "../middleware/auth";
+import { requireAdmin } from "../middleware/auth";
 import type { HonoContext } from "../types";
 import { defects, defectImages } from "../db/schema";
 import { eq, like, or, and, sql, desc, asc } from "drizzle-orm";

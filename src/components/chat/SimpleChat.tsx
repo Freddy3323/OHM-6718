@@ -165,7 +165,7 @@ export function SimpleChat({
                 rows={1}
                 aria-label="Chat message input"
                 className={cn(
-                  "w-full resize-none rounded-lg border bg-background text-sm",
+                  "w-full resize-none rounded-2xl border bg-background text-sm",
                   compact ? "px-2.5 py-2" : "px-3 py-2",
                   "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
                   "disabled:cursor-not-allowed disabled:opacity-50"
@@ -233,7 +233,7 @@ function MessageRow({
         <div className="flex-1">
           <div
             className={cn(
-              "relative rounded-lg border bg-card text-sm shadow-sm",
+              "relative rounded-2xl border bg-card text-sm shadow-sm",
               compact ? "px-2.5 py-1.5" : "px-3 py-2",
               isUser ? "border-primary/20" : "border-border"
             )}

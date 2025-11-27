@@ -86,7 +86,7 @@ export const bookingRoutes = new Hono<HonoContext>()
             if (
               env.TWILIO_ACCOUNT_SID &&
               env.TWILIO_AUTH_TOKEN &&
-              env.TWILIO_PHONE_NUMBER
+              env.TWILIO_NUMBER
             ) {
               const smsResponse = await fetch(
                 `${c.req.url.split("/api")[0]}/api/sms/booking-confirmation`,

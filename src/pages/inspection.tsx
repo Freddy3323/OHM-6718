@@ -257,7 +257,7 @@ export default function InspectionPage() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <div className="h-12 w-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="h-12 w-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading inspection...</p>
         </div>
       </div>
@@ -310,7 +310,7 @@ export default function InspectionPage() {
                 </CardHeader>
                 <CardContent>
                   {!isInspecting ? (
-                    <div className="aspect-video bg-muted rounded-lg flex items-center justify-center relative overflow-hidden">
+                    <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center relative overflow-hidden">
                       <div className="text-center space-y-4">
                         <Video className="h-16 w-16 text-muted-foreground mx-auto" />
                         <div>
@@ -322,7 +322,7 @@ export default function InspectionPage() {
                           </p>
                           {isInspector && (
                             <Button
-                              className="bg-blue-600 hover:bg-blue-700 text-white"
+                              className="bg-primary hover:bg-primary/90 text-white"
                               onClick={handleStartInspection}
                             >
                               <Video className="mr-2 h-4 w-4" />
@@ -348,7 +348,7 @@ export default function InspectionPage() {
                       }}
                     />
                   ) : (
-                    <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                    <div className="aspect-video bg-muted rounded-2xl flex items-center justify-center">
                       <div className="text-center space-y-4">
                         <Video className="h-16 w-16 text-muted-foreground mx-auto" />
                         <p className="text-sm text-muted-foreground">
@@ -363,7 +363,7 @@ export default function InspectionPage() {
                       {aiSuggestions?.suggestions?.map((suggestion: any, index: number) => (
                         <div
                           key={index}
-                          className="bg-yellow-500/90 backdrop-blur text-yellow-900 px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2 animate-pulse"
+                          className="bg-yellow-500/90 backdrop-blur text-yellow-900 px-3 py-2 rounded-2xl text-sm font-medium flex items-center gap-2 animate-pulse"
                         >
                           <Zap className="h-4 w-4" />
                           {suggestion.name} detected ({Math.round(suggestion.confidence * 100)}%)
@@ -419,7 +419,7 @@ export default function InspectionPage() {
                       {detectedDefects.defects.map((defect: any) => (
                         <div
                           key={defect.id}
-                          className="border-2 rounded-lg p-4 hover:border-blue-600 transition cursor-pointer"
+                          className="border-2 rounded-2xl p-4 hover:border-primary transition cursor-pointer"
                         >
                           <div className="flex items-start justify-between mb-2">
                             <div>
@@ -524,7 +524,7 @@ export default function InspectionPage() {
 
                       <Button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        className="w-full bg-primary hover:bg-primary/90 text-white"
                         disabled={addDefectMutation.isPending}
                       >
                         <Plus className="mr-2 h-4 w-4" />
@@ -551,7 +551,7 @@ export default function InspectionPage() {
                         <button
                           key={type.id}
                           type="button"
-                          className="w-full text-left p-3 border rounded-lg hover:border-blue-600 hover:bg-blue-50 transition"
+                          className="w-full text-left p-3 border rounded-2xl hover:border-primary hover:bg-amber-50 transition"
                           onClick={() => {
                             if (isInspector && isInspecting) {
                               setDefectForm({

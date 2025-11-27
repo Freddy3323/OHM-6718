@@ -73,7 +73,7 @@ export function CurrentPlan({ subscription, loading, error }: CurrentPlanProps) 
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-accent rounded-lg">
+            <div className="p-2 bg-accent rounded-2xl">
               <CreditCard className="h-5 w-5" />
             </div>
             <div>
@@ -110,7 +110,7 @@ export function CurrentPlan({ subscription, loading, error }: CurrentPlanProps) 
           <div className="space-y-4">
             {/* Trial Progress */}
             {subscription?.isTrialing && subscription?.trialStart && subscription?.trialEnd && (
-              <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+              <div className="p-4 bg-primary/5 rounded-2xl border border-primary/20">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2 text-sm font-medium text-primary">
                     <Clock className="h-4 w-4" />
@@ -129,7 +129,7 @@ export function CurrentPlan({ subscription, loading, error }: CurrentPlanProps) 
 
             {/* Current Period */}
             {showPeriod && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-muted/40 rounded-lg">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-muted/40 rounded-2xl">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
@@ -172,7 +172,7 @@ export function CurrentPlan({ subscription, loading, error }: CurrentPlanProps) 
             
             {/* Subscription Start Date */}
             {startedAt && !canceledAt && (
-              <div className="p-3 bg-muted/40 rounded-lg">
+              <div className="p-3 bg-muted/40 rounded-2xl">
                 <div className="flex items-center gap-2 text-sm">
                   <CheckCircle className="h-4 w-4 text-primary" />
                   <span className="text-muted-foreground">
@@ -201,7 +201,7 @@ export function CurrentPlan({ subscription, loading, error }: CurrentPlanProps) 
               };
               
               return (
-                <div className="p-4 bg-muted/40 rounded-lg">
+                <div className="p-4 bg-muted/40 rounded-2xl">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                     <CheckCircle className="h-4 w-4" />
                     Active Features
