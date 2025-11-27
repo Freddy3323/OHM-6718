@@ -4,6 +4,7 @@
 export interface SiteConfig {
   name: string;
   tagline: string;
+  subTagline?: string;
   description: string;
   ogImage: string;
   twitterHandle: string;
@@ -11,6 +12,7 @@ export interface SiteConfig {
   // Contact and legal
   contact: {
     email: string;
+    phone?: string;
     company: string;
     address: string;
   };

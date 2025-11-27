@@ -1,348 +1,253 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Link } from "wouter";
-import Footer from "@/components/Footer";
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   CheckCircle2,
-  Video,
-  Calendar,
-  MessageSquare,
-  Award,
-  Home as HomeIcon,
-  Star,
-  DollarSign,
-  Zap,
-  Users,
-  ThumbsUp,
-  XCircle,
-  Eye,
-  AlertTriangle,
   FileText,
-  HelpCircle,
-  Shield,
-  Clock,
-} from "lucide-react";
+  ShieldCheck,
+  AlertTriangle,
+  Download,
+  Video,
+  Scan,
+  UserCheck,
+  ChevronRight,
+  AlertCircle,
+  Home,
+  Droplets,
+  Zap,
+  Wind,
+  Eye,
+  FileWarning,
+} from 'lucide-react';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b bg-background/95 backdrop-blur sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img
-              src="/logo.png"
-              alt="OpenHomeMate"
-              className="h-12 w-auto"
-            />
-            <div className="flex flex-col">
-              <span className="font-bold text-xl text-foreground">OpenHomeMate</span>
-              <span className="text-xs text-muted-foreground">Your Builder In Your Pocket</span>
-            </div>
-          </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-primary transition">
-              Pricing
-            </a>
-            <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-primary transition">
-              How It Works
-            </a>
-            <a href="#what-we-check" className="text-sm font-medium text-muted-foreground hover:text-primary transition">
-              What We Check
-            </a>
-            <Link href="/dashboard">
-              <Button variant="ghost" size="sm">
-                Dashboard
-              </Button>
-            </Link>
-            <Link href="/booking">
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-md">
-                Book Video Walkthrough
-              </Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
-
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-background to-amber-50/30 -z-10" />
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+    <div className="min-h-screen">
+      {/* HERO SECTION */}
+      <section className="relative bg-gradient-to-br from-amber-50 via-cream to-amber-100/30 py-20 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(245,166,35,0.1),transparent_50%)]" />
+        <div className="container relative mx-auto px-4 md:px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="space-y-8">
-              <Badge variant="secondary" className="w-fit rounded-full px-4 py-1.5 shadow-sm">
-                <Award className="h-3 w-3 mr-1.5" />
-                Licensed Builder • 25+ Years Experience
-              </Badge>
-              <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight tracking-tight">
-                  Your Builder In Your Pocket
-                </h1>
-                <p className="text-2xl text-primary font-semibold">
-                  Get expert building advice during any open home—live via video call
-                </p>
+              <div className="inline-block rounded-full bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-700">
+                AI-Powered Building Inspections in 60 Minutes
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Attending an open home? Don't go alone. Video call with Matt, a licensed builder with 25+ years of experience, DURING your walkthrough. He'll guide you on what to check, spot red flags, and give instant honest feedback. You film, he watches, you get answers—all in 15-30 minutes.
+              <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                AI-Powered Building Inspections — No On-Site Visit Needed
+              </h1>
+              <p className="text-xl text-muted-foreground">
+                Upload a video walkthrough or join a guided Zoom session. Our AI analyses every frame and qualified builders verify the results.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/booking">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto rounded-full shadow-lg hover:shadow-xl transition-all">
-                    <Calendar className="mr-2 h-5 w-5" />
-                    Book Your Video Walkthrough - $129
-                  </Button>
-                </Link>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="w-full sm:w-auto rounded-full border-2 border-primary text-primary hover:bg-amber-50"
-                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  See Pricing
-                </Button>
-              </div>
-              <div className="flex items-center gap-6 pt-4 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center text-white text-xs border-2 border-background">
-                      <Star className="w-4 h-4 fill-white" />
-                    </div>
-                    <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white text-xs border-2 border-background">
-                      <Star className="w-4 h-4 fill-white" />
-                    </div>
-                    <div className="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center text-white text-xs border-2 border-background">
-                      <Star className="w-4 h-4 fill-white" />
-                    </div>
-                  </div>
-                  <div className="text-sm">
-                    <div className="font-semibold text-foreground">Fast, Affordable, Honest</div>
-                    <div className="text-muted-foreground">$79-$199 • 15-30 Minutes</div>
-                  </div>
+              <div className="grid gap-3 text-base md:text-lg">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600" />
+                  <span className="font-medium">60-minute delivery</span>
                 </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600" />
+                  <span className="font-medium">From $149–$299</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600" />
+                  <span className="font-medium">Builder-verified</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600" />
+                  <span className="font-medium">Clear visual reporting</span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="rounded-full">
+                  <Link to="/booking">
+                    Start an Inspection
+                    <ChevronRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-full">
+                  <a href="#sample-report">
+                    <Download className="mr-2 h-5 w-5" />
+                    See Sample Report
+                  </a>
+                </Button>
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-amber-400/30 to-amber-600/20 rounded-3xl blur-3xl" />
               <img
                 src="/branding-hero.png"
-                alt="Licensed Builder Matt - Video Property Walkthroughs"
-                className="relative rounded-3xl shadow-2xl w-full"
+                alt="AI-Powered Building Inspection"
+                className="rounded-3xl shadow-2xl"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-amber-50 via-amber-100/50 to-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,166,35,0.1),transparent_70%)]" />
-        <div className="container mx-auto px-4 relative">
-          <div className="text-center max-w-4xl mx-auto mb-12">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary bg-background/50 backdrop-blur-sm">
-              <Video className="h-3 w-3 mr-1.5" />
-              See It In Action
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              See How It Works
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Watch a live building inspection in action and discover how easy it is to get expert guidance from anywhere
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-amber-400/20 to-amber-600/10 p-2">
-              <div className="relative rounded-2xl overflow-hidden bg-black shadow-inner">
-                <video
-                  className="w-full aspect-video"
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label="OpenHomeMate demo video showing live building inspection"
-                >
-                  <source src="/demo-video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-
-            <div className="text-center mt-12 space-y-6">
+      {/* TRUTH ABOUT TRADITIONAL INSPECTIONS */}
+      <section className="py-20 md:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-4xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                The Truth About Traditional Building Inspections And Why Open Home Mate Is the Future
+              </h2>
               <p className="text-lg text-muted-foreground">
-                See why thousands of homeowners trust OpenHomeMate for their building inspections
+                Most buyers imagine a building inspector crawling into every space. But in reality, 80–90% of inspections in Australia are quick, visual-only checks backed by pages of disclaimers — and many areas are never inspected.
               </p>
-              <Link href="/booking">
-                <Button 
-                  size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all group"
-                >
-                  <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                  Ready to Book Your Inspection?
-                </Button>
-              </Link>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2">
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10">
+                    <Home className="h-6 w-6 text-amber-600" />
+                  </div>
+                  <CardTitle>Roof cavities are rarely entered</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>Unsafe access</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>Heat/asbestos risk</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>Tight clearance</span>
+                    </li>
+                  </ul>
+                  <div className="rounded-lg bg-amber-50 p-4 text-sm italic text-amber-900">
+                    "Roof space not safely accessible. Inspection limited at time of visit."
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10">
+                    <AlertTriangle className="h-6 w-6 text-amber-600" />
+                  </div>
+                  <CardTitle>Subfloors are almost never crawled</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>Dusty, cramped, damp</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>Limited visibility</span>
+                    </li>
+                  </ul>
+                  <div className="rounded-lg bg-amber-50 p-4 text-sm italic text-amber-900">
+                    "Subfloor inspection restricted due to limited access."
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10">
+                    <Zap className="h-6 w-6 text-amber-600" />
+                  </div>
+                  <CardTitle>Systems are not tested</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>No plumbing testing</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>No electrical testing</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>No gas testing</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600">•</span>
+                      <span>No drainage testing</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10">
+                    <FileWarning className="h-6 w-6 text-amber-600" />
+                  </div>
+                  <CardTitle>Reports are filled with disclaimers</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p className="italic">"Visual inspection only."</p>
+                    <p className="italic">"Areas not visible were not assessed."</p>
+                    <p className="italic">"Not a structural engineer's report."</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="rounded-2xl bg-amber-50 p-8 text-center">
+              <p className="text-xl font-semibold text-amber-900">
+                Traditional inspections exclude more than most buyers realise.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="py-24 bg-gradient-to-b from-background to-amber-50/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              Simple Pricing
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Fast, Affordable Video Walkthroughs
+      {/* THE MODERN ALTERNATIVE */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-amber-50 to-cream">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-4xl space-y-8 text-center">
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              A Smarter, More Transparent Way to Inspect Property
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Compare to $600-$900 traditional inspections. Choose the tier that fits your needs.
+            <p className="text-xl text-muted-foreground">
+              Open Home Mate uses guided video capture + AI + builder verification to deliver clear, fast, reliable inspections.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-2 border-border shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-6">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-semibold text-foreground">Basic</h3>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-foreground">$79</span>
-                  </div>
+            <div className="grid gap-6 md:grid-cols-2 text-left">
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>15-minute video call with Matt</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>You film, he guides what to check</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Instant verbal feedback</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Red flags identified</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Perfect for quick second opinion</span>
-                  </li>
-                </ul>
-                <Link href="/booking" className="block">
-                  <Button size="lg" variant="outline" className="w-full rounded-full border-2">
-                    Get Started
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-4 border-primary shadow-2xl hover:shadow-3xl transition-all rounded-3xl bg-card relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-2xl">
-                MOST POPULAR
+                <div>
+                  <h3 className="font-semibold mb-1">Guided Zoom or smartphone walkthrough</h3>
+                  <p className="text-sm text-muted-foreground">We guide every step of the recording process</p>
+                </div>
               </div>
-              <CardContent className="p-8 space-y-6 pt-12">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-semibold text-foreground">Standard</h3>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-primary">$129</span>
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>30-minute</strong> video call with Matt</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Detailed guided walkthrough</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>You show: walls, ceilings, floors, kitchen, bathroom, yard</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Comprehensive verbal feedback</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Q&A time included</span>
-                  </li>
-                </ul>
-                <Link href="/booking" className="block">
-                  <Button size="lg" className="w-full rounded-full bg-primary hover:bg-primary/90 shadow-lg">
-                    Book Standard - $129
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-border shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-6">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-semibold text-foreground">Premium</h3>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-foreground">$199</span>
-                  </div>
+                <div>
+                  <h3 className="font-semibold mb-1">AI analyses every frame</h3>
+                  <p className="text-sm text-muted-foreground">Computer vision detects visible defects automatically</p>
                 </div>
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>30-minute video call with Matt</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>Everything in Standard PLUS:</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Written summary emailed after call</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Key findings documented</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Photo references from your video</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Repair advice in writing</span>
-                  </li>
-                </ul>
-                <Link href="/booking" className="block">
-                  <Button size="lg" variant="outline" className="w-full rounded-full border-2">
-                    Get Premium
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="mt-12 text-center max-w-4xl mx-auto">
-            <div className="bg-amber-50 rounded-3xl p-8 border-2 border-amber-200">
-              <h4 className="font-bold text-xl text-foreground mb-4">Add-Ons ($49 each)</h4>
-              <div className="grid md:grid-cols-2 gap-6 text-left">
-                <div className="flex items-start gap-3">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Repair Cost Estimate</p>
-                    <p className="text-sm text-muted-foreground">Get ballpark figures for any issues found</p>
-                  </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Video className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Call Recording</p>
-                    <p className="text-sm text-muted-foreground">Download link sent to you</p>
-                  </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Builder verifies accuracy</h3>
+                  <p className="text-sm text-muted-foreground">Licensed builders review every AI finding</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500">
+                  <CheckCircle2 className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Clear visual report in 60 minutes</h3>
+                  <p className="text-sm text-muted-foreground">Photos, severity levels, and recommendations</p>
                 </div>
               </div>
             </div>
@@ -350,816 +255,515 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              Simple & Fast
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              How It Works
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              From booking to expert feedback in just 5 easy steps
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
-            <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
-                  1
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">Book Online</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Choose your time slot ($79/$129/$199), pay instantly, get confirmation
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
+      {/* HOW IT WORKS */}
+      <section className="py-20 md:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-5xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">How It Works</h2>
+              <p className="text-lg text-muted-foreground">Simple, fast, and transparent</p>
             </div>
 
-            <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
-                  2
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">Share Property Details</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Send us the listing link and open home date/time
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
-                  3
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">You Attend, We Guide</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Go to the open home with your smartphone. We'll call you at the scheduled time.
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
-                  4
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">Live Video Walkthrough</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  You film and show us around. Matt guides you: "Show me under the sink," "Pan up to that ceiling"
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
-                  5
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">Instant Expert Feedback</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Get honest answers during the call. Know exactly what you're dealing with before you make an offer.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="what-we-check" className="py-24 bg-gradient-to-b from-amber-50/30 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              <Eye className="h-3 w-3 mr-1.5" />
-              Visual-Only Assessment
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              What You'll Show Us
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              During the video call, Matt will guide you to check
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Cracking</h4>
-                <p className="text-sm text-muted-foreground">Walls, ceilings, floors</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Moisture</h4>
-                <p className="text-sm text-muted-foreground">Water damage signs</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Roofing</h4>
-                <p className="text-sm text-muted-foreground">Roofline condition</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Flooring</h4>
-                <p className="text-sm text-muted-foreground">Visible issues</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Plumbing/Electrical</h4>
-                <p className="text-sm text-muted-foreground">Visible concerns</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Yard</h4>
-                <p className="text-sm text-muted-foreground">Drainage, structures</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <AlertTriangle className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Fresh Paint Red Flags</h4>
-                <p className="text-sm text-muted-foreground">Covering up issues?</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <HomeIcon className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold text-foreground">Structural</h4>
-                <p className="text-sm text-muted-foreground">General concerns</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="max-w-4xl mx-auto bg-red-50 border-2 border-red-200 rounded-3xl p-8">
-            <h3 className="font-bold text-xl text-foreground mb-4 flex items-center gap-2">
-              <XCircle className="h-6 w-6 text-red-600" />
-              What We DON'T Do
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4 text-muted-foreground">
-              <div className="flex items-start gap-2">
-                <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                <span>Use tools or equipment</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                <span>Access restricted areas (roof cavities, under floors)</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                <span>Provide formal pre-purchase reports</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <XCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                <span>Written guarantees or warranties</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-4xl mx-auto mt-12 bg-gradient-to-br from-amber-50 to-amber-100/50 border-2 border-amber-300 rounded-3xl p-8">
-            <h3 className="font-bold text-2xl text-foreground mb-6 flex items-center gap-3">
-              <Video className="h-8 w-8 text-primary" />
-              You Control the Camera
-            </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Matt tells you where to point your phone. You're his eyes at the property.
-            </p>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h4 className="font-semibold text-lg text-foreground">You Just Need:</h4>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Your smartphone (iPhone or Android)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Good mobile data or WiFi</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Ability to walk around property</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="space-y-4">
-                <h4 className="font-semibold text-lg text-foreground">We Provide:</h4>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Video call link (FaceTime, Zoom, or WhatsApp - your choice)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Scheduled time slot</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Matt's expert guidance</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              Why OpenHomeMate
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Fast, Affordable, Convenient
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              The smart way to get expert eyes on a property before committing
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
-                  <Zap className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Fast</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  15-30 minutes. No waiting weeks for a full inspection.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
-                  <DollarSign className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Affordable</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  $79-$199. Compare that to $600-$900 traditional inspections.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
-                  <Video className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Convenient</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Perfect for interstate buyers. Send a friend/family with their phone if you can't attend.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
-                  <Shield className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Licensed</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Matt has 25+ years building experience.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
-                  <ThumbsUp className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Honest</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Zero sugar-coating. Straight-shooting Aussie advice.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg">
-                  <Clock className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Instant</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Get answers during the open home, not days later.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-gradient-to-b from-amber-50/30 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              <Users className="h-3 w-3 mr-1.5" />
-              Who It's For
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Perfect For
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
-            <Card className="border-0 shadow-lg rounded-3xl bg-card text-center">
-              <CardContent className="p-6 space-y-3">
-                <div className="text-4xl mb-2">🏠</div>
-                <h4 className="font-semibold text-foreground">First-Home Buyers</h4>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card text-center">
-              <CardContent className="p-6 space-y-3">
-                <div className="text-4xl mb-2">✈️</div>
-                <h4 className="font-semibold text-foreground">Interstate Buyers</h4>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card text-center">
-              <CardContent className="p-6 space-y-3">
-                <div className="text-4xl mb-2">💼</div>
-                <h4 className="font-semibold text-foreground">Busy Professionals</h4>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card text-center">
-              <CardContent className="p-6 space-y-3">
-                <div className="text-4xl mb-2">💰</div>
-                <h4 className="font-semibold text-foreground">Property Investors</h4>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card text-center">
-              <CardContent className="p-6 space-y-3">
-                <div className="text-4xl mb-2">🤔</div>
-                <h4 className="font-semibold text-foreground">Anyone Needing Quick Advice</h4>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              Testimonials
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              What Our Clients Say
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Real feedback from real homebuyers
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground leading-relaxed italic">
-                  "I was at an open home and FaceTimed Matt. He spotted water damage under the sink I completely missed. Saved me $30k!"
-                </p>
-                <div className="pt-4">
-                  <p className="font-semibold text-foreground">— Sarah</p>
-                  <p className="text-sm text-muted-foreground">First Home Buyer</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground leading-relaxed italic">
-                  "I'm in Melbourne, property was in Sydney. My sister attended with her phone and Matt guided her through everything. Genius!"
-                </p>
-                <div className="pt-4">
-                  <p className="font-semibold text-foreground">— David</p>
-                  <p className="text-sm text-muted-foreground">Interstate Investor</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground leading-relaxed italic">
-                  "Matt told me 'that crack is cosmetic, don't stress.' Gave me confidence to make an offer. Best $129 I spent."
-                </p>
-                <div className="pt-4">
-                  <p className="font-semibold text-foreground">— Emma</p>
-                  <p className="text-sm text-muted-foreground">Busy Professional</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-gradient-to-b from-amber-50/30 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              <HelpCircle className="h-3 w-3 mr-1.5" />
-              FAQ
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-6">
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Does the builder come to the property?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No. You attend the open home, and Matt joins you via video call. You film and show him around while he guides you on what to check.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  What if I can't attend the open home?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No problem! Send a friend, family member, or even your real estate agent with their phone. Matt guides them on what to film.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  What if the agent doesn't allow filming?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Most agents are fine with buyers filming for personal records. If there's an issue, discreetly explain you're consulting with a builder remotely. Or book a private inspection instead of open home.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Do I need good internet?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Yes, mobile data or WiFi. FaceTime, Zoom, and WhatsApp all work. 4G is usually fine.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Can you see everything on video?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> We can assess anything you show us with your camera. But we can't see inside walls, roof spaces, or under floors—just like you can't.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Is this a full building inspection?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No. This is a quick visual screening. Think of it as "builder's eyes for 30 minutes" to help you decide if a property is worth pursuing further.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Is this as good as a full inspection?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No. This is a quick visual screening to help you decide if a property is worth pursuing further. For properties you're seriously considering, we recommend a full pre-purchase inspection.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  When do I get the written summary?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Premium tier only. Sent via email within 24 hours of your call.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Can I record the call myself?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Yes! Or add the $49 recording add-on and we'll send you a professional copy.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  How fast do I get feedback?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Instant! During the video call. Premium tier includes written summary sent within 24 hours.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <Card className="border-4 border-amber-300 shadow-2xl rounded-3xl bg-gradient-to-br from-amber-50 to-background">
-              <CardContent className="p-12 space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-amber-500 flex items-center justify-center flex-shrink-0">
-                    <AlertTriangle className="h-8 w-8 text-white" />
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              <Card className="rounded-2xl border-2 border-amber-200/50 text-center">
+                <CardHeader>
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600">
+                    <Video className="h-8 w-8 text-white" />
                   </div>
-                  <div>
-                    <h2 className="text-3xl font-bold text-foreground mb-4">
-                      Important: What This Service Is (And Isn't)
-                    </h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      OpenHomeMate is a remote visual assessment service. You film the property via your smartphone, and our licensed builder provides real-time expert opinion.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <h3 className="font-bold text-xl text-foreground flex items-center gap-2">
-                      <CheckCircle2 className="h-6 w-6 text-primary" />
-                      Our Service Includes:
-                    </h3>
-                    <ul className="space-y-3 text-muted-foreground ml-8">
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        Live video call guidance (15-30 minutes)
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        Visual assessment based on what you show us
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        Verbal feedback in real-time
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        General builder opinion from 25+ years experience
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        Optional written summary (Premium)
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="font-bold text-xl text-foreground flex items-center gap-2">
-                      <XCircle className="h-6 w-6 text-red-600" />
-                      Our Service Does NOT Include:
-                    </h3>
-                    <ul className="space-y-3 text-muted-foreground ml-8">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600">•</span>
-                        Physical attendance at the property
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600">•</span>
-                        Use of tools or testing equipment
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600">•</span>
-                        Access to restricted areas (roofs, subfloors, wall cavities)
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600">•</span>
-                        Formal pre-purchase inspection reports
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600">•</span>
-                        Warranties or guarantees
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600">•</span>
-                        Compliance with AS 4349.1 standards
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="bg-amber-100 rounded-2xl p-6 border-2 border-amber-300">
-                  <h3 className="font-bold text-lg text-foreground mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-primary" />
-                    Important Limitations
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We can only assess what you show us on camera. We cannot see inside walls, under floors, or in roof spaces. Lighting and camera quality affect our assessment. This is <strong>NOT</strong> a substitute for a comprehensive building inspection.
+                  <CardTitle className="text-xl">Step 1</CardTitle>
+                  <CardDescription className="font-semibold text-foreground">
+                    Record or Join a Guided Walkthrough
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Just walk through the property with your phone. We guide every step.
                   </p>
-                </div>
+                </CardContent>
+              </Card>
 
-                <div className="bg-primary/10 rounded-2xl p-6 border-2 border-primary/30">
-                  <h3 className="font-bold text-lg text-foreground mb-3 flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-primary" />
-                    Recommendation
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Use OpenHomeMate for quick property screening. For properties you're seriously considering purchasing, we <strong>recommend</strong> a full pre-purchase inspection with physical site access.
+              <Card className="rounded-2xl border-2 border-amber-200/50 text-center">
+                <CardHeader>
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600">
+                    <Scan className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl">Step 2</CardTitle>
+                  <CardDescription className="font-semibold text-foreground">
+                    AI Scans Every Frame
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Our computer vision system identifies visible defects, movement, moisture, hazards & more.
                   </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50 text-center">
+                <CardHeader>
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600">
+                    <UserCheck className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl">Step 3</CardTitle>
+                  <CardDescription className="font-semibold text-foreground">
+                    Builder Verification
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    A qualified builder reviews, corrects, and confirms the findings.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50 text-center">
+                <CardHeader>
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600">
+                    <FileText className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl">Step 4</CardTitle>
+                  <CardDescription className="font-semibold text-foreground">
+                    Report Delivered
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Clear photos, severity levels, next steps, and recommendations — delivered within 60 minutes.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT WE DETECT */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-cream to-amber-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-4xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                What Our AI + Builders Look For
+              </h2>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                { icon: AlertCircle, text: 'Cracks & wall movement' },
+                { icon: Droplets, text: 'Moisture stains & damp' },
+                { icon: Eye, text: 'Workmanship issues' },
+                { icon: Home, text: 'Ceiling sag or damage visible from manhole' },
+                { icon: AlertTriangle, text: 'Uneven floors' },
+                { icon: Zap, text: 'Electrical/wiring surface hazards' },
+                { icon: Droplets, text: 'Drainage concerns' },
+                { icon: ShieldCheck, text: 'Safety risks' },
+                { icon: AlertCircle, text: 'Tile displacement' },
+                { icon: Wind, text: 'Ventilation issues' },
+                { icon: Eye, text: 'Subfloor visibility problems' },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-500/10">
+                    <item.icon className="h-5 w-5 text-amber-600" />
+                  </div>
+                  <span className="font-medium text-sm">{item.text}</span>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SAMPLE REPORT SECTION */}
+      <section id="sample-report" className="py-20 md:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-3xl text-center space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                See Exactly What You'll Receive
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Download a real example of an Open Home Mate inspection report.
+              </p>
+            </div>
+            <Card className="rounded-2xl border-2 border-amber-200/50 p-8">
+              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600">
+                <FileText className="h-10 w-10 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Sample Inspection Report</h3>
+              <p className="text-muted-foreground mb-6">
+                See the level of detail, clarity, and visual documentation you'll receive with every inspection.
+              </p>
+              <Button asChild size="lg" className="rounded-full">
+                <a href="/sample-report.pdf" download>
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Sample Report
+                </a>
+              </Button>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING SECTION */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-amber-50 to-cream">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-5xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Simple, Transparent Pricing
+              </h2>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              <Card className="rounded-2xl border-2 border-border">
+                <CardHeader className="text-center pb-8">
+                  <div className="mb-4 text-4xl font-bold">$149</div>
+                  <CardTitle className="text-2xl">AI Report</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-center text-muted-foreground">
+                    AI-only defect detection with clear visuals.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">AI defect detection</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Visual report with photos</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Severity ratings</span>
+                    </li>
+                  </ul>
+                  <Button asChild variant="outline" className="w-full rounded-full" size="lg">
+                    <Link to="/booking">Select Plan</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-4 border-amber-500 shadow-lg relative">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-amber-500 px-4 py-1 text-sm font-bold text-white">
+                  RECOMMENDED
+                </div>
+                <CardHeader className="text-center pb-8 pt-8">
+                  <div className="mb-4 text-4xl font-bold">$249</div>
+                  <CardTitle className="text-2xl">AI + Builder Verification</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-center text-muted-foreground">
+                    A licensed builder reviews and finalises your report.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Everything in AI Report</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Builder verification</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Professional recommendations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Accuracy guarantee</span>
+                    </li>
+                  </ul>
+                  <Button asChild className="w-full rounded-full" size="lg">
+                    <Link to="/booking">Select Plan</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-border">
+                <CardHeader className="text-center pb-8">
+                  <div className="mb-4 text-4xl font-bold">$299</div>
+                  <CardTitle className="text-2xl">Priority 60-Minute</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-center text-muted-foreground">
+                    Our fastest turnaround with builder verification.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Everything in Builder Verification</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">60-minute delivery guarantee</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-amber-600 mt-0.5" />
+                      <span className="text-sm">Priority processing</span>
+                    </li>
+                  </ul>
+                  <Button asChild variant="outline" className="w-full rounded-full" size="lg">
+                    <Link to="/booking">Select Plan</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="rounded-2xl bg-amber-50 p-6 text-center">
+              <p className="text-sm text-muted-foreground">
+                <strong>Note:</strong> If major issues are found, you may be recommended to obtain a full physical inspection through our partner network.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHO IT'S FOR */}
+      <section className="py-20 md:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-5xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Made for Every Property Customer
+              </h2>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <CardTitle>Buyers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Fast, affordable pre-purchase insights
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <CardTitle>Sellers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Pre-listing inspections that increase transparency
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <CardTitle>Investors</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Perfect for repeated checks and rental assessments
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <CardTitle>Real Estate Agents</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Speed up campaigns and support interstate buyers
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-2xl border-2 border-amber-200/50">
+                <CardHeader>
+                  <CardTitle>Builders/Verifiers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Earn remotely with light, flexible work
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BENEFITS */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-cream to-amber-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-4xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Why Thousands Are Switching to Open Home Mate
+              </h2>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                'No scheduling delays',
+                'No onsite inspector required',
+                'Covers areas inspectors often avoid',
+                'AI consistency + builder accuracy',
+                'Faster than traditional inspections',
+                'Affordable, transparent pricing',
+                'Reports you can trust',
+                'Perfect for interstate buyers',
+              ].map((benefit, idx) => (
+                <div key={idx} className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm">
+                  <CheckCircle2 className="h-6 w-6 shrink-0 text-amber-600" />
+                  <span className="font-medium">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHEN FULL INSPECTION NEEDED */}
+      <section className="py-20 md:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-3xl">
+            <Card className="rounded-2xl border-2 border-amber-500/50 bg-amber-50">
+              <CardHeader>
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500">
+                  <AlertTriangle className="h-8 w-8 text-white" />
+                </div>
+                <CardTitle className="text-center text-2xl">
+                  When a Physical Inspection Is Recommended
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-center text-muted-foreground">
+                  If our system detects signs of:
+                </p>
+                <ul className="space-y-2 mx-auto max-w-md">
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-600">•</span>
+                    <span>Major structural movement</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-600">•</span>
+                    <span>Severe moisture or damp</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-600">•</span>
+                    <span>Roof failure</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-600">•</span>
+                    <span>Electrical hazards</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-600">•</span>
+                    <span>Serious drainage issues</span>
+                  </li>
+                </ul>
+                <p className="text-center text-muted-foreground pt-4">
+                  We may advise you to obtain a full on-site inspection. We partner with qualified inspectors who can provide this service when necessary.
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-background to-amber-50/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="outline" className="mb-4 rounded-full border-primary/30 text-primary">
-              Trusted Excellence
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Licensed & Experienced
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Professional service you can trust
-            </p>
+      {/* FAQ */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-amber-50 to-cream">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-3xl space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                Frequently Asked Questions
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  q: 'Is this as accurate as a physical inspection?',
+                  a: 'For visible issues, yes. We also recommend full inspections when major risks are detected.',
+                },
+                {
+                  q: 'Does this replace a formal building inspection?',
+                  a: 'Not in all cases. It is designed as a visual pre-purchase assessment.',
+                },
+                {
+                  q: 'What equipment do I need?',
+                  a: 'Just your smartphone.',
+                },
+                {
+                  q: 'How long does it take?',
+                  a: 'Most reports are delivered within 60 minutes.',
+                },
+                {
+                  q: 'What if the video quality is bad?',
+                  a: 'We will notify you to rescan any unclear areas.',
+                },
+                {
+                  q: 'Is the AI reliable?',
+                  a: 'All findings are reviewed and verified by qualified builders.',
+                },
+              ].map((faq, idx) => (
+                <Card key={idx} className="rounded-2xl border-2 border-amber-200/50">
+                  <CardHeader>
+                    <CardTitle className="text-lg">{faq.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
-          
-          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Shield className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="font-bold text-2xl text-foreground mb-3">Licensed & Insured</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Full professional coverage</p>
-              </CardContent>
-            </Card>
+        </div>
+      </section>
 
-            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Award className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="font-bold text-2xl text-foreground mb-3">25+ Years</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Building experience</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Zap className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="font-bold text-2xl text-foreground mb-3">15-30 Min</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Fast turnaround</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <DollarSign className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="font-bold text-2xl text-foreground mb-3">$79-$199</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">Affordable pricing</p>
+      {/* DISCLAIMER */}
+      <section className="py-20 md:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-4xl">
+            <Card className="rounded-2xl border-2 border-border">
+              <CardHeader>
+                <CardTitle className="text-center text-2xl">Important Disclaimer</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 text-sm text-muted-foreground">
+                <p>
+                  Open Home Mate provides a visual, non-invasive inspection based on video supplied by the customer. It does not replace a full on-site inspection where major structural or safety concerns are suspected. Findings are limited to visible elements captured in the video. Hidden defects behind walls, floors, ceilings, or coverings cannot be detected. If major risks are identified, a full on-site inspection is recommended.
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Ready to Book Your Video Walkthrough?
+      {/* FINAL CTA */}
+      <section className="py-20 md:py-24 bg-gradient-to-br from-amber-500 to-amber-600">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-3xl text-center space-y-8">
+            <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+              Ready to Inspect Your Next Property?
             </h2>
-            <p className="text-xl text-amber-50 leading-relaxed">
-              Get expert builder's eyes on your next open home. Fast, affordable, honest advice in 15-30 minutes.
+            <p className="text-xl text-amber-50">
+              Fast, affordable, AI-powered inspections you can trust.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/booking">
-                <Button size="lg" className="bg-white text-amber-600 hover:bg-amber-50 w-full sm:w-auto rounded-full shadow-xl hover:shadow-2xl transition-all font-semibold">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Book Now - From $79
-                </Button>
-              </Link>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="bg-transparent border-2 border-white text-white hover:bg-white/10 w-full sm:w-auto rounded-full font-semibold"
-                onClick={() => window.location.href = 'sms:0468046283'}
-              >
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Chat With Matt
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild size="lg" variant="secondary" className="rounded-full">
+                <Link to="/booking">
+                  Start an Inspection
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full border-2 border-white text-white hover:bg-white hover:text-amber-600">
+                <a href="#sample-report">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Sample Report
+                </a>
               </Button>
             </div>
-            <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-amber-50">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5" />
-                25+ Years Experience
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5" />
-                Fast & Affordable
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5" />
-                Instant Feedback
-              </div>
-            </div>
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

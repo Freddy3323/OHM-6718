@@ -1,52 +1,48 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar as CalendarIcon, CheckCircle2, Clock, MapPin, Phone, Mail, Home } from "lucide-react";
-import { Link } from "wouter";
-import { useMutation } from "@tanstack/react-query";
-import { apiClient } from "@/lib/api-client";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { CheckCircle2, Upload, Video, Clock, Mail, MapPin, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { apiClient } from '@/lib/api-client';
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
-    propertyListingUrl: "",
-    propertyAddress: "",
-    propertyType: "",
-    openHomeDate: "",
-    openHomeTime: "",
-    tier: "standard",
-    attending: "",
-    videoCallPlatform: "facetime",
-    contactName: "",
-    contactEmail: "",
-    contactPhone: "",
-    notes: "",
+    propertyAddress: '',
+    propertyListingUrl: '',
+    videoMethod: 'upload',
+    specificConcerns: '',
+    pricingTier: '249',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    preferredContact: 'email',
   });
 
   const [bookingComplete, setBookingComplete] = useState(false);
 
   const bookingMutation = useMutation({
     mutationFn: async (data: typeof formData) => {
-      const openHomeDateTime = new Date(`${data.openHomeDate}T${data.openHomeTime}`);
-      
       const response = await apiClient.bookings.$post({
         json: {
           propertyAddress: data.propertyAddress,
-          propertyType: data.propertyType,
-          propertySize: "N/A",
+          propertyType: 'N/A',
+          propertySize: 'N/A',
           contactName: data.contactName,
           contactEmail: data.contactEmail,
           contactPhone: data.contactPhone,
-          scheduledDate: openHomeDateTime.toISOString(),
-          notes: `Tier: ${data.tier} | Listing URL: ${data.propertyListingUrl} | Attending: ${data.attending} | Video Platform: ${data.videoCallPlatform} | ${data.notes}`,
+          scheduledDate: new Date().toISOString(),
+          notes: `Pricing Tier: $${data.pricingTier} | Video Method: ${data.videoMethod} | Listing URL: ${data.propertyListingUrl} | Specific Concerns: ${data.specificConcerns} | Preferred Contact: ${data.preferredContact}`,
         },
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create booking");
+        throw new Error('Failed to create booking');
       }
 
       return response.json();
@@ -68,59 +64,116 @@ export default function BookingPage() {
   if (bookingComplete) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="max-w-2xl w-full">
+        <Card className="max-w-2xl w-full rounded-2xl border-2 border-amber-200/50">
           <CardContent className="p-12 text-center space-y-6">
-            <div className="h-20 w-20 rounded-full bg-green-100 flex items-center justify-center mx-auto">
-              <CheckCircle2 className="h-10 w-10 text-green-600" />
+            <div className="h-20 w-20 rounded-full bg-amber-100 flex items-center justify-center mx-auto">
+              <CheckCircle2 className="h-10 w-10 text-amber-600" />
             </div>
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold text-foreground">Booking Confirmed!</h2>
+              <h2 className="text-3xl font-bold text-foreground">Inspection Booked!</h2>
               <p className="text-muted-foreground text-lg">
-                Thank you for choosing OpenHomeMate
+                Thank you for choosing Open Home Mate
               </p>
             </div>
-            <div className="bg-muted/50 rounded-2xl p-6 space-y-2 text-left">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5" />
-                <div>
-                  <div className="font-medium">Property Address</div>
-                  <div className="text-sm text-muted-foreground">{formData.propertyAddress}</div>
+            <div className="bg-amber-50 rounded-2xl p-6 space-y-4 text-left">
+              <h3 className="font-semibold text-lg mb-4">What Happens Next:</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white font-bold text-sm">
+                    1
+                  </div>
+                  <div>
+                    <div className="font-medium">We'll contact you within 1 hour</div>
+                    <div className="text-sm text-muted-foreground">
+                      Via {formData.preferredContact} to confirm details and arrange video submission
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CalendarIcon className="h-5 w-5 text-primary mt-0.5" />
-                <div>
-                  <div className="font-medium">Scheduled Time</div>
-                  <div className="text-sm text-muted-foreground">
-                    {new Date(`${formData.openHomeDate}T${formData.openHomeTime}`).toLocaleString()}
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white font-bold text-sm">
+                    2
+                  </div>
+                  <div>
+                    <div className="font-medium">
+                      {formData.videoMethod === 'upload' ? 'Upload your video' : 'Join a guided Zoom session'}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {formData.videoMethod === 'upload'
+                        ? "We'll provide secure upload instructions"
+                        : "We'll schedule a time and send you a Zoom link"}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white font-bold text-sm">
+                    3
+                  </div>
+                  <div>
+                    <div className="font-medium">AI analysis begins immediately</div>
+                    <div className="text-sm text-muted-foreground">
+                      Our computer vision system scans every frame for defects
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white font-bold text-sm">
+                    4
+                  </div>
+                  <div>
+                    <div className="font-medium">Builder verifies findings</div>
+                    <div className="text-sm text-muted-foreground">
+                      {formData.pricingTier === '149'
+                        ? 'AI report is finalized'
+                        : 'A licensed builder reviews and confirms all findings'}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white font-bold text-sm">
+                    5
+                  </div>
+                  <div>
+                    <div className="font-medium">Report delivered</div>
+                    <div className="text-sm text-muted-foreground">
+                      {formData.pricingTier === '299'
+                        ? 'Within 60 minutes with priority processing'
+                        : 'Typically within 2-4 hours'}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-primary mt-0.5" />
-                <div>
-                  <div className="font-medium">Contact</div>
-                  <div className="text-sm text-muted-foreground">{formData.contactPhone}</div>
+            </div>
+            <div className="space-y-4">
+              <div className="rounded-xl bg-muted/50 p-4 text-left">
+                <div className="flex items-start gap-3 mb-2">
+                  <MapPin className="h-5 w-5 text-amber-600 mt-0.5" />
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Property Address</div>
+                    <div className="text-sm text-muted-foreground">{formData.propertyAddress}</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FileText className="h-5 w-5 text-amber-600 mt-0.5" />
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Pricing Tier</div>
+                    <div className="text-sm text-muted-foreground">
+                      ${formData.pricingTier} -{' '}
+                      {formData.pricingTier === '149'
+                        ? 'AI Report'
+                        : formData.pricingTier === '249'
+                        ? 'AI + Builder Verification'
+                        : 'Priority 60-Minute Delivery'}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="space-y-4 pt-4">
-              <p className="text-sm text-muted-foreground">
-                We've sent confirmation details to <strong>{formData.contactEmail}</strong> including your video call link ({formData.videoCallPlatform === 'facetime' ? 'FaceTime' : formData.videoCallPlatform === 'zoom' ? 'Zoom' : 'WhatsApp'}).
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="/dashboard">
-                  <Button className="bg-primary rounded-full hover:bg-primary/90 text-white">
-                    View Dashboard
-                  </Button>
-                </Link>
-                <Link href="/">
-                  <Button variant="outline">
-                    Return Home
-                  </Button>
-                </Link>
+              <div className="text-sm text-muted-foreground">
+                A confirmation email has been sent to <strong>{formData.contactEmail}</strong>
               </div>
             </div>
+            <Button asChild className="rounded-full" size="lg">
+              <Link to="/">Return Home</Link>
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -128,315 +181,297 @@ export default function BookingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b bg-background/95 backdrop-blur sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/">
-            <div className="flex items-center gap-3 cursor-pointer">
-              <img src="/logo.png" alt="OpenHomeMate" className="h-10 w-auto" />
-              <div className="flex flex-col">
-                <span className="font-bold text-xl text-foreground">OpenHomeMate</span>
-                <span className="text-xs text-muted-foreground">Your Builder In Your Pocket</span>
-              </div>
-            </div>
-          </Link>
-          <Link href="/dashboard">
-            <Button variant="ghost">Dashboard</Button>
-          </Link>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">Book Your Video Call</h1>
-            <p className="text-muted-foreground text-lg">
-              You attend the open home—Matt guides you live via video
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-cream to-background py-12 md:py-20">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="mx-auto max-w-3xl space-y-8">
+          <div className="text-center space-y-4">
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+              Start Your AI-Powered Inspection
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Book now and receive your builder-verified report within 60 minutes
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <CalendarIcon className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-semibold text-foreground mb-2">Choose Your Tier</h3>
-                <p className="text-sm text-muted-foreground">$79, $129, or $199</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-semibold text-foreground mb-2">15-30 Minutes</h3>
-                <p className="text-sm text-muted-foreground">Fast video walkthrough</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-semibold text-foreground mb-2">Licensed Builder</h3>
-                <p className="text-sm text-muted-foreground">25+ years experience</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Booking Details</CardTitle>
-              <CardDescription>
-                Tell us about the property and when you'll attend the open home
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Home className="h-5 w-5 text-primary" />
-                    Choose Your Tier
-                  </h3>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="tier">Service Tier *</Label>
-                    <Select
-                      value={formData.tier}
-                      onValueChange={(value) => handleChange("tier", value)}
-                      required
-                    >
-                      <SelectTrigger id="tier">
-                        <SelectValue placeholder="Select tier" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="basic">Basic - $79 (15min call)</SelectItem>
-                        <SelectItem value="standard">Standard - $129 (30min call) ⭐ MOST POPULAR</SelectItem>
-                        <SelectItem value="premium">Premium - $199 (30min + written summary)</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Home className="h-5 w-5 text-primary" />
-                    Property & Open Home Details
-                  </h3>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="propertyListingUrl">Property Listing URL *</Label>
-                    <Input
-                      id="propertyListingUrl"
-                      type="url"
-                      placeholder="https://www.domain.com.au/..."
-                      value={formData.propertyListingUrl}
-                      onChange={(e) => handleChange("propertyListingUrl", e.target.value)}
-                      required
-                    />
-                    <p className="text-xs text-muted-foreground">Paste the link from Domain, realestate.com.au, etc.</p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="propertyAddress">Property Address *</Label>
-                    <Input
-                      id="propertyAddress"
-                      placeholder="123 Main Street, Sydney NSW 2000"
-                      value={formData.propertyAddress}
-                      onChange={(e) => handleChange("propertyAddress", e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="propertyType">Property Type *</Label>
-                      <Select
-                        value={formData.propertyType}
-                        onValueChange={(value) => handleChange("propertyType", value)}
-                        required
-                      >
-                        <SelectTrigger id="propertyType">
-                          <SelectValue placeholder="Select property type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="house">House</SelectItem>
-                          <SelectItem value="apartment">Apartment</SelectItem>
-                          <SelectItem value="townhouse">Townhouse</SelectItem>
-                          <SelectItem value="unit">Unit</SelectItem>
-                          <SelectItem value="villa">Villa</SelectItem>
-                          <SelectItem value="duplex">Duplex</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="attending">Who will film the walkthrough? *</Label>
-                      <Select
-                        value={formData.attending}
-                        onValueChange={(value) => handleChange("attending", value)}
-                        required
-                      >
-                        <SelectTrigger id="attending">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="yes">I'll be filming with my phone</SelectItem>
-                          <SelectItem value="friend">Friend/family will film for me</SelectItem>
-                          <SelectItem value="agent">Real estate agent will film</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <p className="text-xs text-muted-foreground">Matt will guide whoever is at the property via video call</p>
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="openHomeDate">Open Home Date *</Label>
-                      <Input
-                        id="openHomeDate"
-                        type="date"
-                        value={formData.openHomeDate}
-                        onChange={(e) => handleChange("openHomeDate", e.target.value)}
-                        min={new Date().toISOString().split("T")[0]}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="openHomeTime">Open Home Time *</Label>
-                      <Input
-                        id="openHomeTime"
-                        type="time"
-                        value={formData.openHomeTime}
-                        onChange={(e) => handleChange("openHomeTime", e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Mail className="h-5 w-5 text-primary" />
-                    Your Contact Information
-                  </h3>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="contactName">Full Name *</Label>
-                    <Input
-                      id="contactName"
-                      placeholder="John Smith"
-                      value={formData.contactName}
-                      onChange={(e) => handleChange("contactName", e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="contactEmail">Email Address *</Label>
-                      <Input
-                        id="contactEmail"
-                        type="email"
-                        placeholder="john@example.com"
-                        value={formData.contactEmail}
-                        onChange={(e) => handleChange("contactEmail", e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contactPhone">Phone Number *</Label>
-                      <Input
-                        id="contactPhone"
-                        type="tel"
-                        placeholder="+61 400 000 000"
-                        value={formData.contactPhone}
-                        onChange={(e) => handleChange("contactPhone", e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="videoCallPlatform">Preferred Video Call Method *</Label>
-                    <Select
-                      value={formData.videoCallPlatform}
-                      onValueChange={(value) => handleChange("videoCallPlatform", value)}
-                      required
-                    >
-                      <SelectTrigger id="videoCallPlatform">
-                        <SelectValue placeholder="Select platform" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="facetime">FaceTime (iPhone/iPad/Mac)</SelectItem>
-                        <SelectItem value="zoom">Zoom</SelectItem>
-                        <SelectItem value="whatsapp">WhatsApp Video</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <p className="text-xs text-muted-foreground">We'll send you the call link for your chosen platform</p>
-                  </div>
-                </div>
-
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <Card className="rounded-2xl border-2 border-amber-200/50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-amber-600" />
+                  Property Information
+                </CardTitle>
+                <CardDescription>Tell us about the property you want to inspect</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="notes">Additional Notes (Optional)</Label>
+                  <Label htmlFor="propertyAddress">Property Address *</Label>
+                  <Input
+                    id="propertyAddress"
+                    placeholder="123 Main Street, Sydney NSW 2000"
+                    value={formData.propertyAddress}
+                    onChange={(e) => handleChange('propertyAddress', e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="propertyListingUrl">Property Listing URL (optional)</Label>
+                  <Input
+                    id="propertyListingUrl"
+                    type="url"
+                    placeholder="https://www.realestate.com.au/..."
+                    value={formData.propertyListingUrl}
+                    onChange={(e) => handleChange('propertyListingUrl', e.target.value)}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Helps us understand the property layout and features
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl border-2 border-amber-200/50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Video className="h-5 w-5 text-amber-600" />
+                  Video Submission Method
+                </CardTitle>
+                <CardDescription>Choose how you'll provide the video walkthrough</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <RadioGroup
+                  value={formData.videoMethod}
+                  onValueChange={(value) => handleChange('videoMethod', value)}
+                  className="space-y-4"
+                >
+                  <div className="flex items-start space-x-3 rounded-xl border-2 border-border p-4 cursor-pointer hover:border-amber-500 transition-colors">
+                    <RadioGroupItem value="upload" id="upload" className="mt-1" />
+                    <Label htmlFor="upload" className="flex-1 cursor-pointer">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Upload className="h-5 w-5 text-amber-600" />
+                        <span className="font-semibold">Upload a recording</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Record a video walkthrough on your smartphone and upload it. We'll provide detailed
+                        instructions on what to film.
+                      </p>
+                    </Label>
+                  </div>
+                  <div className="flex items-start space-x-3 rounded-xl border-2 border-border p-4 cursor-pointer hover:border-amber-500 transition-colors">
+                    <RadioGroupItem value="guided-zoom" id="guided-zoom" className="mt-1" />
+                    <Label htmlFor="guided-zoom" className="flex-1 cursor-pointer">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Video className="h-5 w-5 text-amber-600" />
+                        <span className="font-semibold">Join a guided Zoom session</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Schedule a live video call where we guide you through the property in real-time. Perfect for
+                        first-time users.
+                      </p>
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl border-2 border-amber-200/50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5 text-amber-600" />
+                  Select Pricing Tier
+                </CardTitle>
+                <CardDescription>Choose the level of service you need</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <RadioGroup
+                  value={formData.pricingTier}
+                  onValueChange={(value) => handleChange('pricingTier', value)}
+                  className="space-y-4"
+                >
+                  <div className="flex items-start space-x-3 rounded-xl border-2 border-border p-4 cursor-pointer hover:border-amber-500 transition-colors">
+                    <RadioGroupItem value="149" id="tier-149" className="mt-1" />
+                    <Label htmlFor="tier-149" className="flex-1 cursor-pointer">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold">AI Report</span>
+                        <span className="text-2xl font-bold text-amber-600">$149</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        AI-only defect detection with clear visuals. Best for initial assessments.
+                      </p>
+                    </Label>
+                  </div>
+                  <div className="flex items-start space-x-3 rounded-xl border-4 border-amber-500 p-4 cursor-pointer bg-amber-50/50 relative">
+                    <div className="absolute -top-3 left-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      RECOMMENDED
+                    </div>
+                    <RadioGroupItem value="249" id="tier-249" className="mt-1" />
+                    <Label htmlFor="tier-249" className="flex-1 cursor-pointer">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold">AI + Builder Verification</span>
+                        <span className="text-2xl font-bold text-amber-600">$249</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        A licensed builder reviews and finalises your report. Most popular choice.
+                      </p>
+                    </Label>
+                  </div>
+                  <div className="flex items-start space-x-3 rounded-xl border-2 border-border p-4 cursor-pointer hover:border-amber-500 transition-colors">
+                    <RadioGroupItem value="299" id="tier-299" className="mt-1" />
+                    <Label htmlFor="tier-299" className="flex-1 cursor-pointer">
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Priority 60-Minute Delivery</span>
+                          <Clock className="h-5 w-5 text-amber-600" />
+                        </div>
+                        <span className="text-2xl font-bold text-amber-600">$299</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Fastest turnaround with builder verification. Perfect for urgent decisions.
+                      </p>
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl border-2 border-amber-200/50">
+              <CardHeader>
+                <CardTitle>Additional Information</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="specificConcerns">Any specific concerns to focus on? (optional)</Label>
                   <Textarea
-                    id="notes"
-                    placeholder="Any specific concerns or areas you'd like Matt to focus on..."
-                    value={formData.notes}
-                    onChange={(e) => handleChange("notes", e.target.value)}
+                    id="specificConcerns"
+                    placeholder="E.g., visible cracks in the ceiling, damp smell in bathroom, uneven flooring..."
+                    value={formData.specificConcerns}
+                    onChange={(e) => handleChange('specificConcerns', e.target.value)}
                     rows={4}
                   />
                 </div>
+              </CardContent>
+            </Card>
 
-                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
-                  <h4 className="font-semibold text-foreground mb-2">What happens next?</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>Instant confirmation via email and SMS with booking details</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>You (or your designee) attend the open home with a smartphone</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>Matt calls you at the scheduled time (FaceTime/Zoom/WhatsApp)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>You film, Matt watches and guides: "Show me under the sink," etc.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>Get instant expert feedback during the call (Premium includes written summary)</span>
-                    </li>
-                  </ul>
+            <Card className="rounded-2xl border-2 border-amber-200/50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Mail className="h-5 w-5 text-amber-600" />
+                  Contact Details
+                </CardTitle>
+                <CardDescription>How can we reach you?</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="contactName">Full Name *</Label>
+                  <Input
+                    id="contactName"
+                    placeholder="John Smith"
+                    value={formData.contactName}
+                    onChange={(e) => handleChange('contactName', e.target.value)}
+                    required
+                  />
                 </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Button
-                    type="submit"
-                    className="bg-primary hover:bg-primary/90 text-white flex-1"
-                    disabled={bookingMutation.isPending}
+                <div className="space-y-2">
+                  <Label htmlFor="contactEmail">Email Address *</Label>
+                  <Input
+                    id="contactEmail"
+                    type="email"
+                    placeholder="john@example.com"
+                    value={formData.contactEmail}
+                    onChange={(e) => handleChange('contactEmail', e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="contactPhone">Phone Number *</Label>
+                  <Input
+                    id="contactPhone"
+                    type="tel"
+                    placeholder="0400 000 000"
+                    value={formData.contactPhone}
+                    onChange={(e) => handleChange('contactPhone', e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="preferredContact">Preferred Contact Method</Label>
+                  <Select
+                    value={formData.preferredContact}
+                    onValueChange={(value) => handleChange('preferredContact', value)}
                   >
-                    {bookingMutation.isPending ? "Processing..." : "Confirm Booking"}
-                  </Button>
-                  <Link href="/">
-                    <Button type="button" variant="outline" className="w-full sm:w-auto">
-                      Cancel
-                    </Button>
-                  </Link>
+                    <SelectTrigger id="preferredContact">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="email">Email</SelectItem>
+                      <SelectItem value="phone">Phone</SelectItem>
+                      <SelectItem value="sms">SMS</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
+              </CardContent>
+            </Card>
 
-                {bookingMutation.isError && (
-                  <div className="bg-red-50 border border-red-200 text-red-800 rounded-2xl p-4">
-                    <p className="font-semibold">Booking Failed</p>
-                    <p className="text-sm">
-                      {bookingMutation.error?.message || "An error occurred. Please try again."}
-                    </p>
+            <div className="rounded-2xl bg-amber-50 p-6 space-y-4">
+              <h3 className="font-semibold text-lg">What Happens After Booking:</h3>
+              <ol className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">
+                    1
                   </div>
-                )}
-              </form>
-            </CardContent>
-          </Card>
+                  <span>We'll contact you within 1 hour to confirm details</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">
+                    2
+                  </div>
+                  <span>
+                    You'll either upload your video or we'll schedule a guided Zoom session
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">
+                    3
+                  </div>
+                  <span>Our AI scans every frame for defects</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">
+                    4
+                  </div>
+                  <span>A licensed builder reviews the findings (if selected tier includes verification)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">
+                    5
+                  </div>
+                  <span>
+                    Report delivered within 60 minutes (Priority) or 2-4 hours (Standard)
+                  </span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full rounded-full"
+                disabled={bookingMutation.isPending}
+              >
+                {bookingMutation.isPending ? 'Processing...' : 'Book Inspection Now'}
+              </Button>
+              <p className="text-xs text-center text-muted-foreground">
+                By booking, you agree to our{' '}
+                <Link to="/terms" className="underline">
+                  Terms of Service
+                </Link>{' '}
+                and{' '}
+                <Link to="/privacy" className="underline">
+                  Privacy Policy
+                </Link>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import RequireAuth from "@/components/RequireAuth";
 import RequireAdmin from "@/components/RequireAdmin";
+import Layout from "@/components/Layout";
 import Billing from "@/pages/billing";
 import BillingSuccess from "@/pages/billing-success";
 import Chat from "@/pages/chat";
@@ -9,20 +10,27 @@ import SignIn from "@/pages/sign-in";
 import SignUp from "@/pages/sign-up";
 import Booking from "@/pages/booking";
 import Inspection from "@/pages/inspection";
+import Agents from "@/pages/agents";
+import Builders from "@/pages/builders";
+import HowItWorks from "@/pages/how-it-works";
+import Contact from "@/pages/contact";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Public routes with layout */}
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/booking" element={<Layout><Booking /></Layout>} />
+        <Route path="/agents" element={<Layout><Agents /></Layout>} />
+        <Route path="/builders" element={<Layout><Builders /></Layout>} />
+        <Route path="/how-it-works" element={<Layout><HowItWorks /></Layout>} />
+        <Route path="/contact" element={<Layout><Contact /></Layout>} />
 
         {/* Authentication routes */}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-
-        {/* Booking routes */}
-        <Route path="/booking" element={<Booking />} />
 
         {/* Dashboard */}
         <Route

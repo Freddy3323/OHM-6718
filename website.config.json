@@ -1,15 +1,16 @@
 {
   "site": {
-    "name": "OpenHomeMate",
-    "tagline": "Your Builder at Every Open Home",
-    "description": "Get a licensed builder's expert eyes on any property in 15-30 minutes via FaceTime. Fast, affordable video walkthroughs at open homes. Book online from $79. Perfect for first-home buyers, interstate buyers, and busy professionals.",
+    "name": "Open Home Mate",
+    "tagline": "AI-Powered Building Inspections in 60 Minutes",
+    "subTagline": "Guided Video • AI Defect Detection • Builder Verified Reports",
+    "description": "Upload a video walkthrough or join a guided Zoom session. Our AI analyses every frame and qualified builders verify the results. Fast, affordable, AI-powered inspections from $149.",
     "ogImage": "/branding-hero.png",
     "twitterHandle": "",
     "contact": {
-      "email": "info@openhomemate.com",
+      "email": "support@openhomemate.com",
       "phone": "0468 046 283",
-      "company": "OpenHomeMate",
-      "address": "Sydney, Australia"
+      "company": "Open Home Mate",
+      "address": "Australia"
     },
     "legal": {
       "privacyPolicy": "/privacy",
