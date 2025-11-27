@@ -6,14 +6,9 @@ import Footer from "@/components/Footer";
 import {
   CheckCircle2,
   Video,
-  Heart,
-  FileCheck,
-  Shield,
-  Clock,
   Calendar,
   MessageSquare,
   Award,
-  Sparkles,
   Home as HomeIcon,
   Star,
   DollarSign,
@@ -25,6 +20,8 @@ import {
   AlertTriangle,
   FileText,
   HelpCircle,
+  Shield,
+  Clock,
 } from "lucide-react";
 
 export default function Home() {
@@ -40,7 +37,7 @@ export default function Home() {
             />
             <div className="flex flex-col">
               <span className="font-bold text-xl text-foreground">OpenHomeMate</span>
-              <span className="text-xs text-muted-foreground">Your Builder at Every Open Home</span>
+              <span className="text-xs text-muted-foreground">Your Builder In Your Pocket</span>
             </div>
           </div>
           <nav className="hidden md:flex items-center gap-6">
@@ -78,14 +75,14 @@ export default function Home() {
               </Badge>
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight tracking-tight">
-                  Your Builder at Every Open Home
+                  Your Builder In Your Pocket
                 </h1>
                 <p className="text-2xl text-primary font-semibold">
-                  Get a licensed builder's eyes on any property in 15-30 minutes—live via video call
+                  Get expert building advice during any open home—live via video call
                 </p>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Buying a home? Don't go blind. Book a live FaceTime inspection with Matt, a licensed builder with 25+ years of experience. Instant feedback on cracks, moisture, roofing, and red flags you'd never spot yourself. Perfect for first-home buyers, interstate buyers, and busy professionals.
+                Attending an open home? Don't go alone. Video call with Matt, a licensed builder with 25+ years of experience, DURING your walkthrough. He'll guide you on what to check, spot red flags, and give instant honest feedback. You film, he watches, you get answers—all in 15-30 minutes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/booking">
@@ -214,11 +211,11 @@ export default function Home() {
                 <ul className="space-y-4 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>15-minute FaceTime call</span>
+                    <span>15-minute video call with Matt</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Licensed builder attends open home</span>
+                    <span>You film, he guides what to check</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -226,11 +223,11 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Red flags and concerns highlighted</span>
+                    <span>Red flags identified</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>General builder opinion</span>
+                    <span>Perfect for quick second opinion</span>
                   </li>
                 </ul>
                 <Link href="/booking" className="block">
@@ -255,27 +252,23 @@ export default function Home() {
                 <ul className="space-y-4 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span><strong>30-minute</strong> FaceTime call</span>
+                    <span><strong>30-minute</strong> video call with Matt</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Licensed builder attends open home</span>
+                    <span>Detailed guided walkthrough</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Detailed verbal walkthrough</span>
+                    <span>You show: walls, ceilings, floors, kitchen, bathroom, yard</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Covers: cracks, moisture, roofing, flooring, services, yard</span>
+                    <span>Comprehensive verbal feedback</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Instant Q&A</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>General builder opinion</span>
+                    <span>Q&A time included</span>
                   </li>
                 </ul>
                 <Link href="/booking" className="block">
@@ -297,7 +290,7 @@ export default function Home() {
                 <ul className="space-y-4 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>30-minute FaceTime call</span>
+                    <span>30-minute video call with Matt</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -305,7 +298,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Written summary sent after call</span>
+                    <span>Written summary emailed after call</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -313,11 +306,11 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Recommendations included</span>
+                    <span>Photo references from your video</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>General builder opinion in writing</span>
+                    <span>Repair advice in writing</span>
                   </li>
                 </ul>
                 <Link href="/booking" className="block">
@@ -347,8 +340,8 @@ export default function Home() {
                     <Video className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">Recorded Walkthrough Video</p>
-                    <p className="text-sm text-muted-foreground">For your records and to share</p>
+                    <p className="font-semibold text-foreground">Call Recording</p>
+                    <p className="text-sm text-muted-foreground">Download link sent to you</p>
                   </div>
                 </div>
               </div>
@@ -379,7 +372,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">Book Online</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Choose your tier, pick your open home time, pay instantly via Stripe
+                  Choose your time slot ($79/$129/$199), pay instantly, get confirmation
                 </p>
               </div>
               <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
@@ -390,9 +383,9 @@ export default function Home() {
                 <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   2
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Send Details</h3>
+                <h3 className="text-xl font-semibold text-foreground">Share Property Details</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Paste the property listing link, confirm open home date/time
+                  Send us the listing link and open home date/time
                 </p>
               </div>
               <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
@@ -403,9 +396,9 @@ export default function Home() {
                 <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   3
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Builder Attends</h3>
+                <h3 className="text-xl font-semibold text-foreground">You Attend, We Guide</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Matt attends the open home for you with his phone
+                  Go to the open home with your smartphone. We'll call you at the scheduled time.
                 </p>
               </div>
               <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
@@ -416,9 +409,9 @@ export default function Home() {
                 <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   4
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Live FaceTime Call</h3>
+                <h3 className="text-xl font-semibold text-foreground">Live Video Walkthrough</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Get instant reactions, red flags, and practical advice during the walkthrough
+                  You film and show us around. Matt guides you: "Show me under the sink," "Pan up to that ceiling"
                 </p>
               </div>
               <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -z-10" />
@@ -429,9 +422,9 @@ export default function Home() {
                 <div className="h-20 w-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
                   5
                 </div>
-                <h3 className="text-xl font-semibold text-foreground">Know the Truth</h3>
+                <h3 className="text-xl font-semibold text-foreground">Instant Expert Feedback</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  Make confident buying decisions with a builder's expert eyes (Premium includes written summary)
+                  Get honest answers during the call. Know exactly what you're dealing with before you make an offer.
                 </p>
               </div>
             </div>
@@ -447,10 +440,10 @@ export default function Home() {
               Visual-Only Assessment
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              What We Check (Visual Only)
+              What You'll Show Us
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Matt walks through the property looking for visible signs of issues
+              During the video call, Matt will guide you to check
             </p>
           </div>
 
@@ -560,6 +553,52 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className="max-w-4xl mx-auto mt-12 bg-gradient-to-br from-amber-50 to-amber-100/50 border-2 border-amber-300 rounded-3xl p-8">
+            <h3 className="font-bold text-2xl text-foreground mb-6 flex items-center gap-3">
+              <Video className="h-8 w-8 text-primary" />
+              You Control the Camera
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Matt tells you where to point your phone. You're his eyes at the property.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h4 className="font-semibold text-lg text-foreground">You Just Need:</h4>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Your smartphone (iPhone or Android)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Good mobile data or WiFi</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Ability to walk around property</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="space-y-4">
+                <h4 className="font-semibold text-lg text-foreground">We Provide:</h4>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Video call link (FaceTime, Zoom, or WhatsApp - your choice)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Scheduled time slot</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Matt's expert guidance</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -609,7 +648,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-semibold text-foreground">Convenient</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  You don't even need to be there. Perfect for interstate buyers.
+                  Perfect for interstate buyers. Send a friend/family with their phone if you can't attend.
                 </p>
               </CardContent>
             </Card>
@@ -727,7 +766,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground leading-relaxed italic">
-                  "Saved me from buying a money pit! Matt spotted water damage in 10 minutes that I totally missed."
+                  "I was at an open home and FaceTimed Matt. He spotted water damage under the sink I completely missed. Saved me $30k!"
                 </p>
                 <div className="pt-4">
                   <p className="font-semibold text-foreground">— Sarah</p>
@@ -744,11 +783,11 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground leading-relaxed italic">
-                  "I'm interstate. Having Matt FaceTime me at the open home was a game-changer."
+                  "I'm in Melbourne, property was in Sydney. My sister attended with her phone and Matt guided her through everything. Genius!"
                 </p>
                 <div className="pt-4">
                   <p className="font-semibold text-foreground">— David</p>
-                  <p className="text-sm text-muted-foreground">Property Investor</p>
+                  <p className="text-sm text-muted-foreground">Interstate Investor</p>
                 </div>
               </CardContent>
             </Card>
@@ -761,7 +800,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground leading-relaxed italic">
-                  "$129 for 30 minutes with a builder? Best money I spent in the whole buying process."
+                  "Matt told me 'that crack is cosmetic, don't stress.' Gave me confidence to make an offer. Best $129 I spent."
                 </p>
                 <div className="pt-4">
                   <p className="font-semibold text-foreground">— Emma</p>
@@ -790,10 +829,70 @@ export default function Home() {
               <CardContent className="p-8 space-y-4">
                 <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
                   <span className="text-primary">Q:</span>
+                  Does the builder come to the property?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed ml-8">
+                  <strong>A:</strong> No. You attend the open home, and Matt joins you via video call. You film and show him around while he guides you on what to check.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-4">
+                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
+                  <span className="text-primary">Q:</span>
+                  What if I can't attend the open home?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed ml-8">
+                  <strong>A:</strong> No problem! Send a friend, family member, or even your real estate agent with their phone. Matt guides them on what to film.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-4">
+                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
+                  <span className="text-primary">Q:</span>
+                  What if the agent doesn't allow filming?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed ml-8">
+                  <strong>A:</strong> Most agents are fine with buyers filming for personal records. If there's an issue, discreetly explain you're consulting with a builder remotely. Or book a private inspection instead of open home.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-4">
+                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
+                  <span className="text-primary">Q:</span>
+                  Do I need good internet?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed ml-8">
+                  <strong>A:</strong> Yes, mobile data or WiFi. FaceTime, Zoom, and WhatsApp all work. 4G is usually fine.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-4">
+                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
+                  <span className="text-primary">Q:</span>
+                  Can you see everything on video?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed ml-8">
+                  <strong>A:</strong> We can assess anything you show us with your camera. But we can't see inside walls, roof spaces, or under floors—just like you can't.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-4">
+                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
+                  <span className="text-primary">Q:</span>
                   Is this a full building inspection?
                 </h4>
                 <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No. This is a fast, visual-only walkthrough via video call. Perfect for initial assessment, but not a replacement for comprehensive pre-purchase inspections.
+                  <strong>A:</strong> No. This is a quick visual screening. Think of it as "builder's eyes for 30 minutes" to help you decide if a property is worth pursuing further.
                 </p>
               </CardContent>
             </Card>
@@ -802,10 +901,10 @@ export default function Home() {
               <CardContent className="p-8 space-y-4">
                 <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
                   <span className="text-primary">Q:</span>
-                  What can you see on FaceTime?
+                  Is this as good as a full inspection?
                 </h4>
                 <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Everything visible: cracks, moisture, roofing, floors, walls, yard. We can't access roof cavities, subfloors, or use testing equipment.
+                  <strong>A:</strong> No. This is a quick visual screening to help you decide if a property is worth pursuing further. For properties you're seriously considering, we recommend a full pre-purchase inspection.
                 </p>
               </CardContent>
             </Card>
@@ -814,10 +913,22 @@ export default function Home() {
               <CardContent className="p-8 space-y-4">
                 <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
                   <span className="text-primary">Q:</span>
-                  Do I need to be at the open home?
+                  When do I get the written summary?
                 </h4>
                 <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No! Matt attends for you. Perfect for interstate buyers or busy schedules.
+                  <strong>A:</strong> Premium tier only. Sent via email within 24 hours of your call.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-lg rounded-3xl bg-card">
+              <CardContent className="p-8 space-y-4">
+                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
+                  <span className="text-primary">Q:</span>
+                  Can I record the call myself?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed ml-8">
+                  <strong>A:</strong> Yes! Or add the $49 recording add-on and we'll send you a professional copy.
                 </p>
               </CardContent>
             </Card>
@@ -829,31 +940,7 @@ export default function Home() {
                   How fast do I get feedback?
                 </h4>
                 <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Instant! During the video call. Premium tier includes written summary sent same day.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  Is this legally binding?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> No. This is expert visual opinion only. Not a formal inspection report.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg rounded-3xl bg-card">
-              <CardContent className="p-8 space-y-4">
-                <h4 className="font-bold text-xl text-foreground flex items-start gap-3">
-                  <span className="text-primary">Q:</span>
-                  What if I want a full inspection later?
-                </h4>
-                <p className="text-muted-foreground leading-relaxed ml-8">
-                  <strong>A:</strong> Smart move! Use our quick walkthrough to shortlist properties, then get full inspections for serious contenders.
+                  <strong>A:</strong> Instant! During the video call. Premium tier includes written summary sent within 24 hours.
                 </p>
               </CardContent>
             </Card>
@@ -872,10 +959,10 @@ export default function Home() {
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold text-foreground mb-4">
-                      Important: What This Service Is
+                      Important: What This Service Is (And Isn't)
                     </h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      OpenHomeMate provides fast, visual-only property assessments via video call during open homes. This is <strong>NOT</strong> a comprehensive pre-purchase building inspection.
+                      OpenHomeMate is a remote visual assessment service. You film the property via your smartphone, and our licensed builder provides real-time expert opinion.
                     </p>
                   </div>
                 </div>
@@ -889,11 +976,11 @@ export default function Home() {
                     <ul className="space-y-3 text-muted-foreground ml-8">
                       <li className="flex items-start gap-2">
                         <span className="text-primary">•</span>
-                        Visual inspection only
+                        Live video call guidance (15-30 minutes)
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary">•</span>
-                        General builder opinion based on visible conditions
+                        Visual assessment based on what you show us
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary">•</span>
@@ -901,7 +988,11 @@ export default function Home() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary">•</span>
-                        Optional written summary (Premium tier)
+                        General builder opinion from 25+ years experience
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        Optional written summary (Premium)
                       </li>
                     </ul>
                   </div>
@@ -914,6 +1005,10 @@ export default function Home() {
                     <ul className="space-y-3 text-muted-foreground ml-8">
                       <li className="flex items-start gap-2">
                         <span className="text-red-600">•</span>
+                        Physical attendance at the property
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600">•</span>
                         Use of tools or testing equipment
                       </li>
                       <li className="flex items-start gap-2">
@@ -922,7 +1017,7 @@ export default function Home() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-red-600">•</span>
-                        Formal written reports with liability
+                        Formal pre-purchase inspection reports
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-red-600">•</span>
@@ -930,7 +1025,7 @@ export default function Home() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-red-600">•</span>
-                        Compliance with Australian Standards for pre-purchase inspections
+                        Compliance with AS 4349.1 standards
                       </li>
                     </ul>
                   </div>
@@ -939,10 +1034,10 @@ export default function Home() {
                 <div className="bg-amber-100 rounded-2xl p-6 border-2 border-amber-300">
                   <h3 className="font-bold text-lg text-foreground mb-3 flex items-center gap-2">
                     <Shield className="h-5 w-5 text-primary" />
-                    Liability
+                    Important Limitations
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Matt provides expert opinion based on 25+ years experience, but this is <strong>NOT</strong> a substitute for a comprehensive pre-purchase inspection. We are not liable for defects in areas we cannot see or access. This is a convenience service for quick, expert visual assessment only.
+                    We can only assess what you show us on camera. We cannot see inside walls, under floors, or in roof spaces. Lighting and camera quality affect our assessment. This is <strong>NOT</strong> a substitute for a comprehensive building inspection.
                   </p>
                 </div>
 
@@ -952,7 +1047,7 @@ export default function Home() {
                     Recommendation
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    For properties you're seriously considering, we <strong>recommend</strong> a full pre-purchase inspection after our initial video walkthrough.
+                    Use OpenHomeMate for quick property screening. For properties you're seriously considering purchasing, we <strong>recommend</strong> a full pre-purchase inspection with physical site access.
                   </p>
                 </div>
               </CardContent>

@@ -19,6 +19,7 @@ export default function BookingPage() {
     openHomeTime: "",
     tier: "standard",
     attending: "",
+    videoCallPlatform: "facetime",
     contactName: "",
     contactEmail: "",
     contactPhone: "",
@@ -40,7 +41,7 @@ export default function BookingPage() {
           contactEmail: data.contactEmail,
           contactPhone: data.contactPhone,
           scheduledDate: openHomeDateTime.toISOString(),
-          notes: `Tier: ${data.tier} | Listing URL: ${data.propertyListingUrl} | Attending: ${data.attending} | ${data.notes}`,
+          notes: `Tier: ${data.tier} | Listing URL: ${data.propertyListingUrl} | Attending: ${data.attending} | Video Platform: ${data.videoCallPlatform} | ${data.notes}`,
         },
       });
 
@@ -91,7 +92,7 @@ export default function BookingPage() {
                 <div>
                   <div className="font-medium">Scheduled Time</div>
                   <div className="text-sm text-muted-foreground">
-                    {new Date(`${formData.scheduledDate}T${formData.scheduledTime}`).toLocaleString()}
+                    {new Date(`${formData.openHomeDate}T${formData.openHomeTime}`).toLocaleString()}
                   </div>
                 </div>
               </div>
@@ -105,7 +106,7 @@ export default function BookingPage() {
             </div>
             <div className="space-y-4 pt-4">
               <p className="text-sm text-muted-foreground">
-                We've sent confirmation details to <strong>{formData.contactEmail}</strong> including your Zoom meeting link.
+                We've sent confirmation details to <strong>{formData.contactEmail}</strong> including your video call link ({formData.videoCallPlatform === 'facetime' ? 'FaceTime' : formData.videoCallPlatform === 'zoom' ? 'Zoom' : 'WhatsApp'}).
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/dashboard">
@@ -135,7 +136,7 @@ export default function BookingPage() {
               <img src="/logo.png" alt="OpenHomeMate" className="h-10 w-auto" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-foreground">OpenHomeMate</span>
-                <span className="text-xs text-muted-foreground">Your Builder at Every Open Home</span>
+                <span className="text-xs text-muted-foreground">Your Builder In Your Pocket</span>
               </div>
             </div>
           </Link>
@@ -148,9 +149,9 @@ export default function BookingPage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">Book Your Video Walkthrough</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-4">Book Your Video Call</h1>
             <p className="text-muted-foreground text-lg">
-              Get a licensed builder's eyes on your next open home in just a few minutes
+              You attend the open home—Matt guides you live via video
             </p>
           </div>
 
@@ -182,7 +183,7 @@ export default function BookingPage() {
             <CardHeader>
               <CardTitle>Booking Details</CardTitle>
               <CardDescription>
-                Tell us about the open home you'd like Matt to attend
+                Tell us about the property and when you'll attend the open home
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -265,7 +266,7 @@ export default function BookingPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="attending">Will you attend the open home? *</Label>
+                      <Label htmlFor="attending">Who will film the walkthrough? *</Label>
                       <Select
                         value={formData.attending}
                         onValueChange={(value) => handleChange("attending", value)}
@@ -275,10 +276,12 @@ export default function BookingPage() {
                           <SelectValue placeholder="Select" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="yes">Yes - I'll be there</SelectItem>
-                          <SelectItem value="no">No - Matt will be my eyes</SelectItem>
+                          <SelectItem value="yes">I'll be filming with my phone</SelectItem>
+                          <SelectItem value="friend">Friend/family will film for me</SelectItem>
+                          <SelectItem value="agent">Real estate agent will film</SelectItem>
                         </SelectContent>
                       </Select>
+                      <p className="text-xs text-muted-foreground">Matt will guide whoever is at the property via video call</p>
                     </div>
                   </div>
 
@@ -350,6 +353,25 @@ export default function BookingPage() {
                       />
                     </div>
                   </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="videoCallPlatform">Preferred Video Call Method *</Label>
+                    <Select
+                      value={formData.videoCallPlatform}
+                      onValueChange={(value) => handleChange("videoCallPlatform", value)}
+                      required
+                    >
+                      <SelectTrigger id="videoCallPlatform">
+                        <SelectValue placeholder="Select platform" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="facetime">FaceTime (iPhone/iPad/Mac)</SelectItem>
+                        <SelectItem value="zoom">Zoom</SelectItem>
+                        <SelectItem value="whatsapp">WhatsApp Video</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-muted-foreground">We'll send you the call link for your chosen platform</p>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -372,15 +394,19 @@ export default function BookingPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>Matt attends the open home at the scheduled time</span>
+                      <span>You (or your designee) attend the open home with a smartphone</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>You'll receive a FaceTime/video call during the walkthrough</span>
+                      <span>Matt calls you at the scheduled time (FaceTime/Zoom/WhatsApp)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
-                      <span>Instant verbal feedback (Premium includes written summary same day)</span>
+                      <span>You film, Matt watches and guides: "Show me under the sink," etc.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5" />
+                      <span>Get instant expert feedback during the call (Premium includes written summary)</span>
                     </li>
                   </ul>
                 </div>
